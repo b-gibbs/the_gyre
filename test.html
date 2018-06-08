@@ -1,0 +1,67 @@
+---
+title: test
+permalink: /test/
+---
+
+<!doctype html>
+
+<html lang="en" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+<body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include navbar.html %}
+
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+      <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        <form class="bd-search d-flex align-items-center">
+          <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" data-siteurl="https://getbootstrap.com" data-docs-version="4.1" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </form>
+        <nav class="collapse bd-links" id="bd-docs-nav">
+          <div class="bd-toc-item">
+            <a class="bd-toc-link" href=/about/>Statistics</a>
+            <ul class="nav bd-sidenav">
+              <li>
+                <a href="/notes/statistics/descriptive_stats/">Descriptive</a>
+              </li>
+              <li>
+                <a href="/notes/statistics/inferential_stats/">Inferential</a>
+              </li>
+              <li>
+                <a href=#>Probability</a>
+              </li>
+            </ul>
+          </div>
+          <div class="bd-toc-item">
+            <a class="bd-toc-link" href=#>Machine Learning</a>
+            <ul class="nav bd-sidenav">
+              <li>
+                <a href=#>Linear Regression</a>
+              </li>
+              <li>
+                <a href=#>Logistical Regression</a>
+              </li>
+              <li>
+                <a href=#>K-Means Clustering</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="d-none d-xl-block col-xl-2 bd-toc">
+        <h4>Right</h4>
+      </div>
+      <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <h4>MAIN</h4>
+      </main>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>

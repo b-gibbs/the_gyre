@@ -1,0 +1,27 @@
+/*@media (min-width: 768px)*/
+.bd-navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1071;
+}
+
+.bd-navbar {
+    min-height: 4rem;
+    box-shadow: 0 0.5rem 1rem rgba(192,213,234,0.2), inset 0 -1px 0 rgba(192,213,234, 0.1);
+    background-color: rgb(192,213,234);
+}
+
+.nav-item {
+  font-size: 1.2rem;
+  padding-right: 20px;
+}
+
+
+.bd-navbar .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.bd-navbar .navbar-nav .nav-link.active, .bd-navbar .navbar-nav .nav-link:hover {
+
+}

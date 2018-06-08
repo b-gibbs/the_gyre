@@ -1,0 +1,17 @@
+
+.jumbotron {
+  position: relative;
+  background-image: url('../assets/images/circuits.jpg');
+  background-size: cover;
+  min-height: 250px;
+  color: #fff;
+  text-align: right;
+  
+  .primary-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

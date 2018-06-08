@@ -1,0 +1,48 @@
+main:
+  - title: "Coursework"
+    url: /coursework/
+  - title: "Notes"
+    url: /notes/
+  - title: "Posts"
+    url: /year-archive/
+
+
+
+coursework:
+  - title: "Exploratory Data Analysis"
+    url: /notes/statistics/index/
+  - title: "Descriptive Statistics"
+    url: /notes/machine_learning/index/
+  - title: "Inferential Statistics"
+    url: /notes/deep_learning/index/
+  - title: "Linear Regression"
+    url: /notes/tools/index/
+
+
+notes:
+  - title: "Statistics"
+    url: /notes/statistics/index/
+  - title: "Machine Learning"
+    url: /notes/machine_learning/index/
+  - title: "Deep Learning"
+    url: /notes/deep_learning/index/
+  - title: "Tools"
+    url: /notes/tools/index/
+
+notes_statistics:
+  - title: "Descriptive"
+    url: /notes/statistics/descriptive/
+  - title: "Inferential"
+    url: /notes/statistics/inferential/
+
+notes_machine_learning:
+  - title: "Overview"
+    url: /notes/machine_learning/overview/
+  - title: "Trade-offs"
+    url: /notes/machine_learning/tradeoffs/
+  - title: "Linear Regression"
+    url: /notes/machine_learning/algorithms/linear_regression/
+  - title: "Style Full"
+    url: /notes/machine_learning/style_test_full
+  - title: "Style Basic"
+    url: /notes/machine_learning/style_test_basic
