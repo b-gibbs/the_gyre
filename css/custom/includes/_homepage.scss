@@ -1,0 +1,57 @@
+.homepage-header {
+  h3 {
+    color: #3f3f46;
+    font-weight: 700;
+  }
+}
+
+.homepage-text{
+  h4 {
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.5;
+    margin: 15px 0px 15px 0px;
+  }
+
+  a {
+    color: #569cd6;
+  }
+}
+
+
+
+.poem-container {
+  margin: 20px 20px;
+  padding: 20px 20px;
+  border: 5px solid #333;
+  border-radius: 10px;
+  overflow: auto;
+  font-family: 'Bilbo', cursive;
+  font-size: 1.75rem;
+  position: relative;
+  text-align: left;
+  color:rgba(85, 52, 0, 1);
+  background-color: antiquewhite;
+//  background: url(/assets/images/textured_paper.svg);
+//  background-size: contain;
+
+  h4 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+
+
+
+.poem-thumb img {
+  max-width: 35%;
+  display: block;
+  border-radius: 50%;
+  float: right;
+}
+
+poem-content {
+  margin-left: 2rem;
+}

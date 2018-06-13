@@ -1,0 +1,66 @@
+--- 
+layout: default 
+---
+
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <form class="bd-search d-flex align-items-center">
+        <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off"
+          data-siteurl="https://getbootstrap.com" data-docs-version="4.1">
+        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav"
+          aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false">
+            <title>Menu</title>
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22" />
+          </svg>
+        </button>
+      </form>
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        {% if site.data.navigation[page.sidebar] %}
+          {% for item in site.data.navigation[page.sidebar] %}
+            <div class="bd-toc-item">
+              <a class="bd-toc-link" href="{{ item.url }}">{{ item.title }}</a>
+              {% if item.subfolderitems[0] %}
+                <ul class="entry-group">
+                  {% for entry in item.subfolderitems %}
+                      <li class="{% if entry.url == page.url %}active{% endif %}"><a href="{{ entry.url }}">{{ entry.page }}</a>
+                        {% if entry.subsubfolderitems[0] %}
+                          <ul>
+                          {% for subentry in entry.subsubfolderitems %}
+                              <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ subentry.url }}">{{ subentry.page }}</a></li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </nav>
+    </div>
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+      <ul class="section-nav">
+        <h4>Page Contents</h4>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Overview</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Linear Algebra</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Trade-Offs</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Bias v Variance</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Feature Engineering</a>
+        </li>
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      {{ content }}
+    </main> 
+  </div>

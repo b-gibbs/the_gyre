@@ -1,67 +1,73 @@
----
-title: test
+--- 
+title: test 
 permalink: /test/
+layout: default
 ---
 
-<!doctype html>
 
-<html lang="en" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
-
-<body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
-    {% include navbar.html %}
-
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-      <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-        <form class="bd-search d-flex align-items-center">
-          <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-            <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" data-siteurl="https://getbootstrap.com" data-docs-version="4.1" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-          </span>
-        </form>
-        <nav class="collapse bd-links" id="bd-docs-nav">
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href=/about/>Statistics</a>
-            <ul class="nav bd-sidenav">
-              <li>
-                <a href="/notes/statistics/descriptive_stats/">Descriptive</a>
-              </li>
-              <li>
-                <a href="/notes/statistics/inferential_stats/">Inferential</a>
-              </li>
-              <li>
-                <a href=#>Probability</a>
-              </li>
-            </ul>
-          </div>
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href=#>Machine Learning</a>
-            <ul class="nav bd-sidenav">
-              <li>
-                <a href=#>Linear Regression</a>
-              </li>
-              <li>
-                <a href=#>Logistical Regression</a>
-              </li>
-              <li>
-                <a href=#>K-Means Clustering</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <div class="d-none d-xl-block col-xl-2 bd-toc">
-        <h4>Right</h4>
-      </div>
-      <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-        <h4>MAIN</h4>
-      </main>
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <form class="bd-search d-flex align-items-center">
+        <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off"
+          data-siteurl="https://getbootstrap.com" data-docs-version="4.1">
+          <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav"
+            aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false">
+              <title>Menu</title>
+              <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22" />
+            </svg>
+          </button>
+      </form>
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        <div> 
+          {% if site.data.samplelist.toc2[0] %} 
+            {% for item in site.data.samplelist.toc2 %}
+              <div class="bd-toc-item">{{ item.title }} 
+                {% if item.subfolderitems[0] %}
+                  <ul class="nav bd-sidenav">
+                    {% for entry in item.subfolderitems %}
+                      <li><a href="{{ entry.url }}">{{ entry.page }}</a>
+                        {% if entry.subsubfolderitems[0] %}
+                          <ul>
+                            {% for subentry in entry.subsubfolderitems %}
+                              <li>
+                                <a href="{{ subentry.url }}">{{ subentry.page }}</a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %} 
+              </div>
+            {% endfor %} 
+          {% endif %}
+        </div>
+      </nav>
     </div>
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+      <ul class="section-nav">
+        <h4>Page Contents</h4>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Overview</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Linear Algebra</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Trade-Offs</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Bias v Variance</a>
+        </li>
+        <li class="toc-entry toc-h2">
+          <a href="#overview">Feature Engineering</a>
+        </li>
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <h4>MAIN</h4>
+    </main>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-</body>
+</div>

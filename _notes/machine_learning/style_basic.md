@@ -1,8 +1,8 @@
 ---
 title: Style Testing
-layout: default
+layout: notebooks
 excerpt: CSS testing
-permalink: /notes/machine_learning/style_test_basic
+permalink: /notes/machine_learning/style_test_basic/
 sidebar:
   nav: "notes_machine_learning"
 toc: true

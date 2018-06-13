@@ -1,8 +1,8 @@
 ---
 title: Notes - Machine Learning
 excerpt: Section header for all machine learning notes.
-layout: single
-permalink: /notes/machine_learning/index.html
+toc: false
+permalink: /notes/ml/index/
 ---
 
 

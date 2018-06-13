@@ -1,48 +1,53 @@
-main:
-  - title: "Coursework"
-    url: /coursework/
-  - title: "Notes"
-    url: /notes/
-  - title: "Posts"
-    url: /year-archive/
-
 
 
 coursework:
-  - title: "Exploratory Data Analysis"
-    url: /notes/statistics/index/
-  - title: "Descriptive Statistics"
-    url: /notes/machine_learning/index/
-  - title: "Inferential Statistics"
-    url: /notes/deep_learning/index/
-  - title: "Linear Regression"
-    url: /notes/tools/index/
-
+  - title: "Projects"
+    url: /coursework/projects/index/
+  - title: "Statistics"
+    subfolderitems:
+    - page: "Human Body Temp"
+      url: /coursework/stats/body_temp/
+    - page: "Racial Discrimination"
+      url: /coursework/stats/racial_disc/
+    - page: "Hospital Readmissions"
+      url: /coursework/stats/hosp_read/
+  - title: "Machine Learning"
+    url: /coursework/ml/index/
+    subfolderitems:
+    - page: "Linear Regression"
+      url: /coursework/ml/linear_regression/
+    - page: "Logistic Regression"
+      url: /coursework/ml/logistic_regression/
+    - page: "Clustering"
+      url: /coursework/ml/clustering/
+    - page: "Naive Bayes"
+      url: /coursework/ml/naive_bayes/
 
 notes:
   - title: "Statistics"
     url: /notes/statistics/index/
+    subfolderitems:
+    - page: "Overview"
+      url: /notes/statistics/index/
+    - page: "Descriptive"
+      url: /notes/statistics/descriptive/
+    - page: "Inferential"
+      url: /notes/statistics/inferential/
+  - title: "Feature Engineering"
+    url: /notes/statistics/index/
+    subfolderitems:
+    - page: "Overview"
+      url: /notes/feature_engineering/index/
   - title: "Machine Learning"
-    url: /notes/machine_learning/index/
+    url: /notes/ml/index/
+    subfolderitems:
+    - page: "Overview"
+      url: /notes/ml/index/
+    - page: "Trade-offs"
+      url: /notes/machine_learning/trade_offs/
   - title: "Deep Learning"
-    url: /notes/deep_learning/index/
-  - title: "Tools"
-    url: /notes/tools/index/
+    url: /notes/statistics/index/
+    subfolderitems:
+    - page: "Overview"
+      url: /notes/deep_learning/index/
 
-notes_statistics:
-  - title: "Descriptive"
-    url: /notes/statistics/descriptive/
-  - title: "Inferential"
-    url: /notes/statistics/inferential/
-
-notes_machine_learning:
-  - title: "Overview"
-    url: /notes/machine_learning/overview/
-  - title: "Trade-offs"
-    url: /notes/machine_learning/tradeoffs/
-  - title: "Linear Regression"
-    url: /notes/machine_learning/algorithms/linear_regression/
-  - title: "Style Full"
-    url: /notes/machine_learning/style_test_full
-  - title: "Style Basic"
-    url: /notes/machine_learning/style_test_basic

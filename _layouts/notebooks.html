@@ -1,0 +1,47 @@
+--- 
+layout: default 
+---
+
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        {% if site.data.navigation[page.sidebar] %}
+          {% for item in site.data.navigation[page.sidebar] %}
+            <div class="bd-toc-item">
+              <li class="bd-toc-link">{{ item.title }}</li>
+              {% if item.subfolderitems[0] %}
+                <ul class="entry-group">
+                  {% for entry in item.subfolderitems %}
+                      <li class="{% if entry.url == page.url %}active{% endif %}"><a href="{{ entry.url }}">{{ entry.page }}</a>
+                        {% if entry.subsubfolderitems[0] %}
+                          <ul>
+                          {% for subentry in entry.subsubfolderitems %}
+                              <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ subentry.url }}">{{ subentry.page }}</a></li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </nav>
+    </div>
+    
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+      {% if page.toc %}
+        <aside class="sidebar__right">
+          <nav class="toc">
+            <header><h4 class="nav__title">Page Contents</h4></header>
+            {% include toc.html html=content sanitize=true class="toc-menu" id="page-toc" h_min=2 h_max=3 %}
+          </nav>
+        </aside>
+      {% endif %}
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      {{ content }}
+    </main> 
+  </div>

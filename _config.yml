@@ -151,30 +151,28 @@ defaults:
       path: "_coursework"
       type: coursework
     values:
-      layout: single
+      layout: notebooks
       author_profile: false
       share: true
       toc: true
-      sidebar:
-        nav: "coursework"
+      sidebar: coursework
   # _notes
   - scope:
       path: "_notes"
       type: notes
     values:
-      layout: single
+      layout: notebooks
       author_profile: false
       toc: true
-      sidebar:
-        nav: "notes"
+      sidebar: notes
   # _posts
   - scope:
       path: "_posts"
       type: posts
     values:
-      layout: single
+      layout: default
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
