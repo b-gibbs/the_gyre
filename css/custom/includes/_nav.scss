@@ -28,11 +28,10 @@
   }
 
   @include media-breakpoint-up(md) {
-
-      width: 100%;
-      top: 0;
-      z-index: 1071; // over everything in bootstrap
-
+    position: sticky;
+    //width: 100%;
+    top: 0;
+    z-index: 1071; // over everything in bootstrap
   }
 
   .navbar-nav {
