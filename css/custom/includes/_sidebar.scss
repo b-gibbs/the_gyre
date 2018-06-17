@@ -55,6 +55,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 
 
+
   @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       position: sticky;
