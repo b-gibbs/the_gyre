@@ -7,16 +7,7 @@ permalink: /coursework/ml/logistic_regression/
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h1><p>$$
-\renewcommand{\like}{{\cal L}}
-\renewcommand{\loglike}{{\ell}}
-\renewcommand{\err}{{\cal E}}
-\renewcommand{\dat}{{\cal D}}
-\renewcommand{\hyp}{{\cal H}}
-\renewcommand{\Ex}[2]{E_{#1}[#2]}
-\renewcommand{\x}{{\mathbf x}}
-\renewcommand{\v}[1]{{\mathbf #1}}
-$$</p>
+<h1 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h1>
 
 </div>
 </div>

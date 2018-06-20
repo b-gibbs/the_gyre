@@ -1956,6 +1956,7 @@ div.output_unrecognized a:hover {
 .rendered_html pre,
 .rendered_html code {
   border: 0;
+  background-color: #f7f7f7;
 }
 .rendered_html blockquote {
   margin: 1em 2em;
@@ -2058,6 +2059,7 @@ div.text_cell_render {
   border-style: none;
   padding: 0.5em 0.5em 0.5em 0.4em;
   color: #000;
+
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
