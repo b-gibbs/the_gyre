@@ -1,0 +1,48 @@
+--- 
+layout: default 
+---
+
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        {% if site.data.navigation[page.sidebar] %}
+          {% for item in site.data.navigation[page.sidebar] %}
+            <div class="bd-toc-item">
+              <li class="bd-toc-link">{{ item.title }}</li>
+              {% if item.subfolderitems[0] %}
+                <ul class="entry-group">
+                  {% for entry in item.subfolderitems %}
+                      <li class="{% if entry.url == page.url %}active{% endif %}"><a href="{{ entry.url }}">{{ entry.page }}</a>
+                        {% if entry.subsubfolderitems[0] %}
+                          <ul>
+                          {% for subentry in entry.subsubfolderitems %}
+                              <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ subentry.url }}">{{ subentry.page }}</a></li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </nav>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <div class="container sticky-top">
+        <div class="row">
+          <div class="col-xl">
+              <h1>{{ page.title }}</h1>
+          </div>
+          <div class="col-md">
+              <a href="{{ page.section }}"><button type="button" class="btn btn-primary">Back</button></a>
+          </div>
+        </div>
+      </div>
+      <br>
+      {{ content }}
+    </main> 
+  </div>

@@ -1,3 +1,12 @@
+---
+title: ncaa_scraper.py
+layout: code
+permalink: /coursework/projects/nfl_defensive_back/ncaa_scraper
+excerpt: ""
+section: "/coursework/projects/nfl_defensive_back/#ncaa_scraper.py"
+---
+{% highlight python %}
+
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -7,13 +16,6 @@ import pickle
 import sys
 from collections import OrderedDict
 
-# TO DO:
-# loop through years 2006 - 2015 and add all players to a single team DF
-# create a tuple for each player's name, class, school, year, assign id as key in dict
-# if data looks suspect, compare values for dups, then look at keys/ids
-# look to see that all teams have similar numbers of DBs
-# DB -> Defensive Back in 2013-14
-# source for home state, HS, birth date?  Search CSVs?  Kaggle?
 
 def save(obj, name ):
     with open('player_ids/'+ name + '.pkl', 'wb') as f:
@@ -25,12 +27,9 @@ def load(name ):
 
 team = sys.argv[1]
 team_name = team.replace(' ', '_').lower().strip()
-print(team_name)
-
 
 team_name = team_name
 orgId = int(sys.argv[2])
-
 
 
 df = None
@@ -426,3 +425,4 @@ if a != b:
   ps = load('problems')
   ps.add(team_name)
   save(ps, 'problems')
+{% endhighlight %}

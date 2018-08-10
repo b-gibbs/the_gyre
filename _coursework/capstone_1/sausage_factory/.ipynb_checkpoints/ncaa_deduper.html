@@ -1,0 +1,1127 @@
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/anaconda3/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+/anaconda3/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Fixer</span><span class="p">:</span>
+    
+    <span class="c1"># class variables</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="s1">&#39;fr&#39;</span><span class="p">,</span> <span class="s1">&#39;so&#39;</span><span class="p">,</span> <span class="s1">&#39;jr&#39;</span><span class="p">,</span> <span class="s1">&#39;sr&#39;</span><span class="p">]</span>
+    <span class="n">prefixes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rf_&#39;</span><span class="p">,</span> <span class="s1">&#39;fr_&#39;</span><span class="p">,</span> <span class="s1">&#39;so_&#39;</span><span class="p">,</span> <span class="s1">&#39;jr_&#39;</span><span class="p">,</span> <span class="s1">&#39;sr_&#39;</span><span class="p">]</span>
+    <span class="n">empty_stats_year</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;games&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;tackles_solo&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;tackles_asst&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
+                        <span class="s1">&#39;tfl_solo&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;tfl_asst&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;tfl_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;sacks_solo&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;sacks_asst&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
+                        <span class="s1">&#39;sacks_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;int_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;int_td&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;fum&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
+                        <span class="s1">&#39;fum_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;fum_td&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;ffum&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;punt_ret&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;punt_ret_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
+                        <span class="s1">&#39;punt_ret_td&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;kick_ret&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;kick_ret_yards&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;kick_ret_td&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;total_points&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}</span>
+    <span class="n">agg_stats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;games&#39;</span><span class="p">,</span> <span class="s1">&#39;tackles_solo&#39;</span><span class="p">,</span> <span class="s1">&#39;tackles_asst&#39;</span><span class="p">,</span> <span class="s1">&#39;tfl_solo&#39;</span><span class="p">,</span> <span class="s1">&#39;tfl_asst&#39;</span><span class="p">,</span> <span class="s1">&#39;tfl_yards&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;sacks_solo&#39;</span><span class="p">,</span> <span class="s1">&#39;sacks_asst&#39;</span><span class="p">,</span> <span class="s1">&#39;sacks_yards&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;int_yards&#39;</span><span class="p">,</span> <span class="s1">&#39;int_td&#39;</span><span class="p">,</span> <span class="s1">&#39;fum&#39;</span><span class="p">,</span> <span class="s1">&#39;fum_yards&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;fum_td&#39;</span><span class="p">,</span> <span class="s1">&#39;ffum&#39;</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">,</span> <span class="s1">&#39;punt_ret&#39;</span><span class="p">,</span> <span class="s1">&#39;punt_ret_yards&#39;</span><span class="p">,</span> <span class="s1">&#39;punt_ret_td&#39;</span><span class="p">,</span> <span class="s1">&#39;kick_ret&#39;</span><span class="p">,</span> <span class="s1">&#39;kick_ret_yards&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;kick_ret_td&#39;</span><span class="p">,</span> <span class="s1">&#39;total_points&#39;</span><span class="p">]</span>
+    
+    <span class="n">extracted_dups</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">team_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">team_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+              
+    <span class="k">def</span> <span class="nf">pprintDF</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;ncaa_yr_ct&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;games&#39;</span><span class="p">,</span> <span class="s1">&#39;tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;rf_year&#39;</span><span class="p">,</span> <span class="s1">&#39;rf_games&#39;</span><span class="p">,</span> <span class="s1">&#39;rf_tackles_solo&#39;</span><span class="p">,</span> 
+                        <span class="s1">&#39;fr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;fr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;fr_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;so_year&#39;</span><span class="p">,</span> <span class="s1">&#39;so_games&#39;</span><span class="p">,</span> <span class="s1">&#39;so_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;jr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;jr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;jr_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;sr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;sr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;sr_tackles_solo&#39;</span><span class="p">]]</span>
+    
+    <span class="k">def</span> <span class="nf">pprint_dups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;ncaa_yr_ct&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;games&#39;</span><span class="p">,</span> <span class="s1">&#39;tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;rf_year&#39;</span><span class="p">,</span> <span class="s1">&#39;rf_games&#39;</span><span class="p">,</span> <span class="s1">&#39;rf_tackles_solo&#39;</span><span class="p">,</span> 
+                        <span class="s1">&#39;fr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;fr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;fr_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;so_year&#39;</span><span class="p">,</span> <span class="s1">&#39;so_games&#39;</span><span class="p">,</span> <span class="s1">&#39;so_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;jr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;jr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;jr_tackles_solo&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;sr_year&#39;</span><span class="p">,</span> <span class="s1">&#39;sr_games&#39;</span><span class="p">,</span> <span class="s1">&#39;sr_tackles_solo&#39;</span><span class="p">]]</span>
+
+
+    <span class="k">def</span> <span class="nf">extract_dups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extracted_dups</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;names&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">extracted_dups</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span>
+    
+    
+    <span class="k">def</span> <span class="nf">aggregate_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_df</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_stats</span><span class="p">:</span>
+            <span class="n">player_df</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">player_df</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">player_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">s</span><span class="p">)]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">player_df</span><span class="p">[</span><span class="s1">&#39;ncaa_yr_ct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player_df</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">player_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)]]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">player_df</span>
+        
+        
+    <span class="k">def</span> <span class="nf">reset_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_df</span><span class="p">):</span>
+        
+        <span class="n">gen_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;names&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;ncaa_yr_ct&#39;</span><span class="p">]</span>
+        
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">player_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># get list of ints for columns with prefixes</span>
+        <span class="n">rf</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;rf_&#39;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+        <span class="n">fr</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;fr_&#39;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+        <span class="n">so</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;so_&#39;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+        <span class="n">jr</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;jr_&#39;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+        <span class="n">sr</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;sr_&#39;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+
+        <span class="n">ordered</span> <span class="o">=</span> <span class="n">gen_cols</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_stats</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="n">rf</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">rf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="n">fr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">fr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="n">so</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">so</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="n">jr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">jr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="n">sr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">sr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="n">player_df</span> <span class="o">=</span> <span class="n">player_df</span><span class="p">[</span><span class="n">ordered</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">player_df</span>
+    
+    
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_player</span><span class="p">):</span>
+        <span class="n">df_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_player</span><span class="p">,</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">df_count_new</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Appended: </span><span class="si">{}</span><span class="s1">.  Count was </span><span class="si">{}</span><span class="s1">.  Count is now </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_player</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">df_count</span><span class="p">,</span> <span class="n">df_count_new</span><span class="p">))</span>
+    
+    
+    <span class="c1"># one or more years overlap, need to shift years</span>
+    <span class="c1"># find length, doubles and holes</span>
+    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dicts</span><span class="p">):</span>
+        <span class="c1"># find number of years of stats</span>
+        <span class="n">year_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stats_dicts</span><span class="p">)</span>
+        
+        <span class="c1"># separate dicts into nan and used</span>
+        <span class="n">empty</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">used</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">top_class_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">stats_dicts</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                
+                <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">):</span>
+                    <span class="n">c</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+                        <span class="n">empty</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                        <span class="n">tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">tc</span> <span class="o">&gt;</span> <span class="n">top_class_idx</span><span class="p">:</span>
+                            <span class="n">top_class_idx</span> <span class="o">=</span> <span class="n">tc</span>
+                        
+        
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">used</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">used</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">used</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="c1"># select classes to be filled by slicing all possible classes</span>
+               
+        <span class="c1"># select all classes from rf up to the highest class listed</span>
+        <span class="n">classes_below_top_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">[:</span><span class="n">top_class_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        
+        <span class="c1"># start at the highest class listed and work back the number of year of stats we have to fill</span>
+        <span class="n">classes_to_fill</span> <span class="o">=</span> <span class="n">classes_below_top_class</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">used</span><span class="p">):]</span>
+        
+        
+        <span class="n">fixed_stats</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">used_idx</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
+            <span class="n">yr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="bp">cls</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span>
+            
+            <span class="c1"># create a copy of the empty dict, prefix all of the keys and save it on</span>
+            <span class="k">if</span> <span class="bp">cls</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">classes_to_fill</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_stats_year</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">yr_dict</span><span class="p">[</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="n">fixed_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yr_dict</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">old_dict</span> <span class="o">=</span> <span class="n">used</span><span class="p">[</span><span class="n">used_idx</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_stats_year</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">yr_dict</span><span class="p">[</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">old_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">k</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">fixed_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yr_dict</span><span class="p">)</span>
+                <span class="n">used_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EMPTY: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">empty</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;USED: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">used</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classes to fill: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">classes_to_fill</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="n">fixed_stats</span>
+       
+    
+    <span class="k">def</span> <span class="nf">resolve_top</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dups_pair</span><span class="p">):</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">new_record</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+            <span class="n">new_record</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">cols</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
+            <span class="n">yr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">alt_yr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            
+            <span class="n">filter_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dups_pair</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">cls</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span><span class="p">)]</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">filter_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="n">alt_yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">shift</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+            <span class="c1"># collect yr dicts into list</span>
+            <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yr_dict</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">alt_yr_dict</span><span class="p">):</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alt_yr_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">shift</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+        
+        <span class="c1"># add keys and values from each year&#39;s stats to new_record</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">new_record</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dups_pair</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_record</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_stats</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_order</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+        
+        
+    <span class="c1"># this is the default case where years for the two entries don&#39;t overlap</span>
+    <span class="k">def</span> <span class="nf">resolve_bottom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dups_pair</span><span class="p">):</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">new_record</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+            <span class="n">new_record</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">:</span>
+            <span class="n">yr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">alt_yr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            
+            <span class="n">filter_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dups_pair</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">cls</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span><span class="p">)]</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">dups_pair</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">filter_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="n">alt_yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">shift</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yr_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">filter_col</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+            <span class="c1"># collect yr dicts into list</span>
+            <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yr_dict</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">alt_yr_dict</span><span class="p">):</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alt_yr_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">shift</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+        
+        <span class="c1"># add keys and values from each year&#39;s stats to new_record</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">new_record</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dups_pair</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_record</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_stats</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+        <span class="n">new_player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_order</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_player</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">skip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dups_pair</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dups_pair</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dups_pair</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dup_players</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span> <span class="o">=</span> <span class="n">Fixer</span><span class="p">(</span><span class="s1">&#39;liberty&#39;</span><span class="p">)</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 96 entries, 0 to 95
+Columns: 159 entries, player_id to total_points
+dtypes: float64(149), int64(2), object(8)
+memory usage: 120.0+ KB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">extracted_dups</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract dups</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">extract_dups</span><span class="p">();</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span> <span class="o">=</span> <span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player_id</th>
+      <th>player</th>
+      <th>names</th>
+      <th>team</th>
+      <th>ncaa_yr_ct</th>
+      <th>rf_year</th>
+      <th>rf_position</th>
+      <th>rf_games</th>
+      <th>rf_tackles_solo</th>
+      <th>rf_tackles_asst</th>
+      <th>rf_tfl_solo</th>
+      <th>rf_tfl_asst</th>
+      <th>rf_tfl_yards</th>
+      <th>rf_sacks_solo</th>
+      <th>rf_sacks_asst</th>
+      <th>rf_sacks_yards</th>
+      <th>rf_int</th>
+      <th>rf_int_yards</th>
+      <th>rf_int_td</th>
+      <th>rf_fum</th>
+      <th>rf_fum_yards</th>
+      <th>rf_fum_td</th>
+      <th>rf_ffum</th>
+      <th>rf_safety</th>
+      <th>rf_punt_ret</th>
+      <th>rf_punt_ret_yards</th>
+      <th>rf_punt_ret_td</th>
+      <th>rf_kick_ret</th>
+      <th>rf_kick_ret_yards</th>
+      <th>rf_kick_ret_td</th>
+      <th>rf_total_points</th>
+      <th>fr_year</th>
+      <th>fr_position</th>
+      <th>fr_games</th>
+      <th>fr_tackles_solo</th>
+      <th>fr_tackles_asst</th>
+      <th>fr_tfl_solo</th>
+      <th>fr_tfl_asst</th>
+      <th>fr_tfl_yards</th>
+      <th>fr_sacks_solo</th>
+      <th>fr_sacks_asst</th>
+      <th>fr_sacks_yards</th>
+      <th>fr_int</th>
+      <th>fr_int_yards</th>
+      <th>fr_int_td</th>
+      <th>fr_fum</th>
+      <th>fr_fum_yards</th>
+      <th>fr_fum_td</th>
+      <th>fr_ffum</th>
+      <th>fr_safety</th>
+      <th>fr_punt_ret</th>
+      <th>fr_punt_ret_yards</th>
+      <th>fr_punt_ret_td</th>
+      <th>fr_kick_ret</th>
+      <th>fr_kick_ret_yards</th>
+      <th>fr_kick_ret_td</th>
+      <th>fr_total_points</th>
+      <th>so_year</th>
+      <th>so_position</th>
+      <th>so_games</th>
+      <th>so_tackles_solo</th>
+      <th>so_tackles_asst</th>
+      <th>so_tfl_solo</th>
+      <th>so_tfl_asst</th>
+      <th>so_tfl_yards</th>
+      <th>so_sacks_solo</th>
+      <th>so_sacks_asst</th>
+      <th>so_sacks_yards</th>
+      <th>so_int</th>
+      <th>so_int_yards</th>
+      <th>so_int_td</th>
+      <th>so_fum</th>
+      <th>so_fum_yards</th>
+      <th>so_fum_td</th>
+      <th>so_ffum</th>
+      <th>so_safety</th>
+      <th>so_punt_ret</th>
+      <th>so_punt_ret_yards</th>
+      <th>so_punt_ret_td</th>
+      <th>so_kick_ret</th>
+      <th>so_kick_ret_yards</th>
+      <th>so_kick_ret_td</th>
+      <th>so_total_points</th>
+      <th>jr_year</th>
+      <th>jr_position</th>
+      <th>jr_games</th>
+      <th>jr_tackles_solo</th>
+      <th>jr_tackles_asst</th>
+      <th>jr_tfl_solo</th>
+      <th>jr_tfl_asst</th>
+      <th>jr_tfl_yards</th>
+      <th>jr_sacks_solo</th>
+      <th>jr_sacks_asst</th>
+      <th>jr_sacks_yards</th>
+      <th>jr_int</th>
+      <th>jr_int_yards</th>
+      <th>jr_int_td</th>
+      <th>jr_fum</th>
+      <th>jr_fum_yards</th>
+      <th>jr_fum_td</th>
+      <th>jr_ffum</th>
+      <th>jr_safety</th>
+      <th>jr_punt_ret</th>
+      <th>jr_punt_ret_yards</th>
+      <th>jr_punt_ret_td</th>
+      <th>jr_kick_ret</th>
+      <th>jr_kick_ret_yards</th>
+      <th>jr_kick_ret_td</th>
+      <th>jr_total_points</th>
+      <th>sr_year</th>
+      <th>sr_position</th>
+      <th>sr_games</th>
+      <th>sr_tackles_solo</th>
+      <th>sr_tackles_asst</th>
+      <th>sr_tfl_solo</th>
+      <th>sr_tfl_asst</th>
+      <th>sr_tfl_yards</th>
+      <th>sr_sacks_solo</th>
+      <th>sr_sacks_asst</th>
+      <th>sr_sacks_yards</th>
+      <th>sr_int</th>
+      <th>sr_int_yards</th>
+      <th>sr_int_td</th>
+      <th>sr_fum</th>
+      <th>sr_fum_yards</th>
+      <th>sr_fum_td</th>
+      <th>sr_ffum</th>
+      <th>sr_safety</th>
+      <th>sr_punt_ret</th>
+      <th>sr_punt_ret_yards</th>
+      <th>sr_punt_ret_td</th>
+      <th>sr_kick_ret</th>
+      <th>sr_kick_ret_yards</th>
+      <th>sr_kick_ret_td</th>
+      <th>sr_total_points</th>
+      <th>games</th>
+      <th>tackles_solo</th>
+      <th>tackles_asst</th>
+      <th>tfl_solo</th>
+      <th>tfl_asst</th>
+      <th>tfl_yards</th>
+      <th>sacks_solo</th>
+      <th>sacks_asst</th>
+      <th>sacks_yards</th>
+      <th>int</th>
+      <th>int_yards</th>
+      <th>int_td</th>
+      <th>fum</th>
+      <th>fum_yards</th>
+      <th>fum_td</th>
+      <th>ffum</th>
+      <th>safety</th>
+      <th>punt_ret</th>
+      <th>punt_ret_yards</th>
+      <th>punt_ret_td</th>
+      <th>kick_ret</th>
+      <th>kick_ret_yards</th>
+      <th>kick_ret_td</th>
+      <th>total_points</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player_id</th>
+      <th>player</th>
+      <th>names</th>
+      <th>team</th>
+      <th>ncaa_yr_ct</th>
+      <th>rf_year</th>
+      <th>rf_position</th>
+      <th>rf_games</th>
+      <th>rf_tackles_solo</th>
+      <th>rf_tackles_asst</th>
+      <th>rf_tfl_solo</th>
+      <th>rf_tfl_asst</th>
+      <th>rf_tfl_yards</th>
+      <th>rf_sacks_solo</th>
+      <th>rf_sacks_asst</th>
+      <th>rf_sacks_yards</th>
+      <th>rf_int</th>
+      <th>rf_int_yards</th>
+      <th>rf_int_td</th>
+      <th>rf_fum</th>
+      <th>rf_fum_yards</th>
+      <th>rf_fum_td</th>
+      <th>rf_ffum</th>
+      <th>rf_safety</th>
+      <th>rf_punt_ret</th>
+      <th>rf_punt_ret_yards</th>
+      <th>rf_punt_ret_td</th>
+      <th>rf_kick_ret</th>
+      <th>rf_kick_ret_yards</th>
+      <th>rf_kick_ret_td</th>
+      <th>rf_total_points</th>
+      <th>fr_year</th>
+      <th>fr_position</th>
+      <th>fr_games</th>
+      <th>fr_tackles_solo</th>
+      <th>fr_tackles_asst</th>
+      <th>fr_tfl_solo</th>
+      <th>fr_tfl_asst</th>
+      <th>fr_tfl_yards</th>
+      <th>fr_sacks_solo</th>
+      <th>fr_sacks_asst</th>
+      <th>fr_sacks_yards</th>
+      <th>fr_int</th>
+      <th>fr_int_yards</th>
+      <th>fr_int_td</th>
+      <th>fr_fum</th>
+      <th>fr_fum_yards</th>
+      <th>fr_fum_td</th>
+      <th>fr_ffum</th>
+      <th>fr_safety</th>
+      <th>fr_punt_ret</th>
+      <th>fr_punt_ret_yards</th>
+      <th>fr_punt_ret_td</th>
+      <th>fr_kick_ret</th>
+      <th>fr_kick_ret_yards</th>
+      <th>fr_kick_ret_td</th>
+      <th>fr_total_points</th>
+      <th>so_year</th>
+      <th>so_position</th>
+      <th>so_games</th>
+      <th>so_tackles_solo</th>
+      <th>so_tackles_asst</th>
+      <th>so_tfl_solo</th>
+      <th>so_tfl_asst</th>
+      <th>so_tfl_yards</th>
+      <th>so_sacks_solo</th>
+      <th>so_sacks_asst</th>
+      <th>so_sacks_yards</th>
+      <th>so_int</th>
+      <th>so_int_yards</th>
+      <th>so_int_td</th>
+      <th>so_fum</th>
+      <th>so_fum_yards</th>
+      <th>so_fum_td</th>
+      <th>so_ffum</th>
+      <th>so_safety</th>
+      <th>so_punt_ret</th>
+      <th>so_punt_ret_yards</th>
+      <th>so_punt_ret_td</th>
+      <th>so_kick_ret</th>
+      <th>so_kick_ret_yards</th>
+      <th>so_kick_ret_td</th>
+      <th>so_total_points</th>
+      <th>jr_year</th>
+      <th>jr_position</th>
+      <th>jr_games</th>
+      <th>jr_tackles_solo</th>
+      <th>jr_tackles_asst</th>
+      <th>jr_tfl_solo</th>
+      <th>jr_tfl_asst</th>
+      <th>jr_tfl_yards</th>
+      <th>jr_sacks_solo</th>
+      <th>jr_sacks_asst</th>
+      <th>jr_sacks_yards</th>
+      <th>jr_int</th>
+      <th>jr_int_yards</th>
+      <th>jr_int_td</th>
+      <th>jr_fum</th>
+      <th>jr_fum_yards</th>
+      <th>jr_fum_td</th>
+      <th>jr_ffum</th>
+      <th>jr_safety</th>
+      <th>jr_punt_ret</th>
+      <th>jr_punt_ret_yards</th>
+      <th>jr_punt_ret_td</th>
+      <th>jr_kick_ret</th>
+      <th>jr_kick_ret_yards</th>
+      <th>jr_kick_ret_td</th>
+      <th>jr_total_points</th>
+      <th>sr_year</th>
+      <th>sr_position</th>
+      <th>sr_games</th>
+      <th>sr_tackles_solo</th>
+      <th>sr_tackles_asst</th>
+      <th>sr_tfl_solo</th>
+      <th>sr_tfl_asst</th>
+      <th>sr_tfl_yards</th>
+      <th>sr_sacks_solo</th>
+      <th>sr_sacks_asst</th>
+      <th>sr_sacks_yards</th>
+      <th>sr_int</th>
+      <th>sr_int_yards</th>
+      <th>sr_int_td</th>
+      <th>sr_fum</th>
+      <th>sr_fum_yards</th>
+      <th>sr_fum_td</th>
+      <th>sr_ffum</th>
+      <th>sr_safety</th>
+      <th>sr_punt_ret</th>
+      <th>sr_punt_ret_yards</th>
+      <th>sr_punt_ret_td</th>
+      <th>sr_kick_ret</th>
+      <th>sr_kick_ret_yards</th>
+      <th>sr_kick_ret_td</th>
+      <th>sr_total_points</th>
+      <th>games</th>
+      <th>tackles_solo</th>
+      <th>tackles_asst</th>
+      <th>tfl_solo</th>
+      <th>tfl_asst</th>
+      <th>tfl_yards</th>
+      <th>sacks_solo</th>
+      <th>sacks_asst</th>
+      <th>sacks_yards</th>
+      <th>int</th>
+      <th>int_yards</th>
+      <th>int_td</th>
+      <th>fum</th>
+      <th>fum_yards</th>
+      <th>fum_td</th>
+      <th>ffum</th>
+      <th>safety</th>
+      <th>punt_ret</th>
+      <th>punt_ret_yards</th>
+      <th>punt_ret_td</th>
+      <th>kick_ret</th>
+      <th>kick_ret_yards</th>
+      <th>kick_ret_td</th>
+      <th>total_points</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>player_id</th>
+      <th>player</th>
+      <th>names</th>
+      <th>team</th>
+      <th>ncaa_yr_ct</th>
+      <th>rf_year</th>
+      <th>rf_position</th>
+      <th>rf_games</th>
+      <th>rf_tackles_solo</th>
+      <th>rf_tackles_asst</th>
+      <th>rf_tfl_solo</th>
+      <th>rf_tfl_asst</th>
+      <th>rf_tfl_yards</th>
+      <th>rf_sacks_solo</th>
+      <th>rf_sacks_asst</th>
+      <th>rf_sacks_yards</th>
+      <th>rf_int</th>
+      <th>rf_int_yards</th>
+      <th>rf_int_td</th>
+      <th>rf_fum</th>
+      <th>rf_fum_yards</th>
+      <th>rf_fum_td</th>
+      <th>rf_ffum</th>
+      <th>rf_safety</th>
+      <th>rf_punt_ret</th>
+      <th>rf_punt_ret_yards</th>
+      <th>rf_punt_ret_td</th>
+      <th>rf_kick_ret</th>
+      <th>rf_kick_ret_yards</th>
+      <th>rf_kick_ret_td</th>
+      <th>rf_total_points</th>
+      <th>fr_year</th>
+      <th>fr_position</th>
+      <th>fr_games</th>
+      <th>fr_tackles_solo</th>
+      <th>fr_tackles_asst</th>
+      <th>fr_tfl_solo</th>
+      <th>fr_tfl_asst</th>
+      <th>fr_tfl_yards</th>
+      <th>fr_sacks_solo</th>
+      <th>fr_sacks_asst</th>
+      <th>fr_sacks_yards</th>
+      <th>fr_int</th>
+      <th>fr_int_yards</th>
+      <th>fr_int_td</th>
+      <th>fr_fum</th>
+      <th>fr_fum_yards</th>
+      <th>fr_fum_td</th>
+      <th>fr_ffum</th>
+      <th>fr_safety</th>
+      <th>fr_punt_ret</th>
+      <th>fr_punt_ret_yards</th>
+      <th>fr_punt_ret_td</th>
+      <th>fr_kick_ret</th>
+      <th>fr_kick_ret_yards</th>
+      <th>fr_kick_ret_td</th>
+      <th>fr_total_points</th>
+      <th>so_year</th>
+      <th>so_position</th>
+      <th>so_games</th>
+      <th>so_tackles_solo</th>
+      <th>so_tackles_asst</th>
+      <th>so_tfl_solo</th>
+      <th>so_tfl_asst</th>
+      <th>so_tfl_yards</th>
+      <th>so_sacks_solo</th>
+      <th>so_sacks_asst</th>
+      <th>so_sacks_yards</th>
+      <th>so_int</th>
+      <th>so_int_yards</th>
+      <th>so_int_td</th>
+      <th>so_fum</th>
+      <th>so_fum_yards</th>
+      <th>so_fum_td</th>
+      <th>so_ffum</th>
+      <th>so_safety</th>
+      <th>so_punt_ret</th>
+      <th>so_punt_ret_yards</th>
+      <th>so_punt_ret_td</th>
+      <th>so_kick_ret</th>
+      <th>so_kick_ret_yards</th>
+      <th>so_kick_ret_td</th>
+      <th>so_total_points</th>
+      <th>jr_year</th>
+      <th>jr_position</th>
+      <th>jr_games</th>
+      <th>jr_tackles_solo</th>
+      <th>jr_tackles_asst</th>
+      <th>jr_tfl_solo</th>
+      <th>jr_tfl_asst</th>
+      <th>jr_tfl_yards</th>
+      <th>jr_sacks_solo</th>
+      <th>jr_sacks_asst</th>
+      <th>jr_sacks_yards</th>
+      <th>jr_int</th>
+      <th>jr_int_yards</th>
+      <th>jr_int_td</th>
+      <th>jr_fum</th>
+      <th>jr_fum_yards</th>
+      <th>jr_fum_td</th>
+      <th>jr_ffum</th>
+      <th>jr_safety</th>
+      <th>jr_punt_ret</th>
+      <th>jr_punt_ret_yards</th>
+      <th>jr_punt_ret_td</th>
+      <th>jr_kick_ret</th>
+      <th>jr_kick_ret_yards</th>
+      <th>jr_kick_ret_td</th>
+      <th>jr_total_points</th>
+      <th>sr_year</th>
+      <th>sr_position</th>
+      <th>sr_games</th>
+      <th>sr_tackles_solo</th>
+      <th>sr_tackles_asst</th>
+      <th>sr_tfl_solo</th>
+      <th>sr_tfl_asst</th>
+      <th>sr_tfl_yards</th>
+      <th>sr_sacks_solo</th>
+      <th>sr_sacks_asst</th>
+      <th>sr_sacks_yards</th>
+      <th>sr_int</th>
+      <th>sr_int_yards</th>
+      <th>sr_int_td</th>
+      <th>sr_fum</th>
+      <th>sr_fum_yards</th>
+      <th>sr_fum_td</th>
+      <th>sr_ffum</th>
+      <th>sr_safety</th>
+      <th>sr_punt_ret</th>
+      <th>sr_punt_ret_yards</th>
+      <th>sr_punt_ret_td</th>
+      <th>sr_kick_ret</th>
+      <th>sr_kick_ret_yards</th>
+      <th>sr_kick_ret_td</th>
+      <th>sr_total_points</th>
+      <th>games</th>
+      <th>tackles_solo</th>
+      <th>tackles_asst</th>
+      <th>tfl_solo</th>
+      <th>tfl_asst</th>
+      <th>tfl_yards</th>
+      <th>sacks_solo</th>
+      <th>sacks_asst</th>
+      <th>sacks_yards</th>
+      <th>int</th>
+      <th>int_yards</th>
+      <th>int_td</th>
+      <th>fum</th>
+      <th>fum_yards</th>
+      <th>fum_td</th>
+      <th>ffum</th>
+      <th>safety</th>
+      <th>punt_ret</th>
+      <th>punt_ret_yards</th>
+      <th>punt_ret_td</th>
+      <th>kick_ret</th>
+      <th>kick_ret_yards</th>
+      <th>kick_ret_td</th>
+      <th>total_points</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">761</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># fx.dup_players.drop([p])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">resolve_top</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprintDF</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">resolve_bottom</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprintDF</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">dup_players</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">pprint_dups</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fx</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;ncaa_deduped.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+ 
+
