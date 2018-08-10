@@ -4,16 +4,10 @@ coursework:
   - title: "Projects"
     url: /coursework/projects/index/
     subfolderitems:
-    - page: "NFL Cornerback Success"
-      url: /coursework/projects/nfl_cornerback/
+    - page: "Classification: NFL Defensive Back Success"
+      url: /coursework/projects/nfl_defensive_back/
     - page: "AAPL Earnings Bumps"
       url: /coursework/projects/aapl_earnings/
-    - page: "Median Home Prices"
-      url: /coursework/projects/home_prices/
-    - page: "Movie Reviews"
-      url: /coursework/projects/movie_reviews/
-    - page: "Car Resale Value"
-      url: /coursework/projects/car_resale_prices/
   - title: "Statistics"
     subfolderitems:
     - page: "Human Body Temp"
