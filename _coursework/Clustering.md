@@ -281,7 +281,7 @@ permalink: /coursework/ml/clustering/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Checkup Exercise Set I</h3>
+<h4>Checkup Exercise Set I</h4>
 
 <p><b>Exercise:</b> Create a data frame where each row has the following columns (Use the pandas <code>merge</code> and <code>pivot_table</code> functions for this purpose):</p>
 <ul>
@@ -532,7 +532,7 @@ permalink: /coursework/ml/clustering/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Checkup Exercise Set II</h3>
+<h4>Checkup Exercise Set II</h4>
 
 <p><b>Exercise:</b></p> 
 <ul>
@@ -771,7 +771,7 @@ permalink: /coursework/ml/clustering/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Checkup Exercise Set III</h3>
+<h4>Checkup Exercise Set III</h4>
 
 <p><b>Exercise:</b> Using the documentation for the `silhouette_score` function above, construct a series of silhouette plots like the ones in the article linked above.</p>
 </div>
@@ -1242,7 +1242,7 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Checkup Exercise Set IV</h3>
+<h4>Checkup Exercise Set IV</h4>
 
 <p><b>Exercise:</b> Use PCA to plot your clusters:</p>
 
@@ -1550,7 +1550,7 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-success">
 
-<h2>Key Takeaways</h2>
+<h4>Key Takeaways</h4>
 
 <p>That was a lot of visual information at once. Observations by cluster:</p>
 
@@ -1596,7 +1596,7 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Exercise Set V</h3>
+<h4>Exercise Set V</h4>
 
 <p>As we saw earlier, PCA has a lot of other uses. Since we wanted to visualize our data in 2 dimensions, restricted the number of dimensions to 2 in PCA. But what is the true optimal number of dimensions?</p>
 
@@ -1794,14 +1794,14 @@ distances</td>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<h3>Exercise Set VI</h3>
+<h4>Exercise Set VI</h4>
 
 <p><b>Exercise:</b> Try clustering using the following algorithms. </p>
 <ol>
-<li>Affinity propagation
-<li>Spectral clustering
-<li>Agglomerative clustering
-<li>DBSCAN
+<li>Affinity propagation</li>
+<li>Spectral clustering</li>
+<li>Agglomerative clustering</li>
+<li>DBSCAN</li>
 </ol>
 <p>How do their results compare? Which performs the best? Tell a story why you think it performs the best.</p>
 </div>

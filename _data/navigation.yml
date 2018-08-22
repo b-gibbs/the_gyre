@@ -4,9 +4,9 @@ coursework:
   - title: "Projects"
     url: /coursework/projects/index/
     subfolderitems:
-    - page: "Classification: NFL Defensive Back Success"
+    - page: "NFL Defensive Back Success"
       url: /coursework/projects/nfl_defensive_back/
-    - page: "AAPL Earnings Bumps"
+    - page: "What Moves AAPL?"
       url: /coursework/projects/aapl_earnings/
   - title: "Statistics"
     subfolderitems:
@@ -29,34 +29,11 @@ coursework:
       url: /coursework/ml/naive_bayes/
 
 notes:
-  - title: "Statistics"
-    url: /notes/statistics/index/
-    subfolderitems:
-    - page: "Overview"
-      url: /notes/statistics/index/
-    - page: "Descriptive"
-      url: /notes/statistics/descriptive/
-    - page: "Inferential"
-      url: /notes/statistics/inferential/
-  - title: "Feature Engineering"
-    url: /notes/statistics/index/
-    subfolderitems:
-    - page: "Overview"
-      url: /notes/feature_engineering/index/
   - title: "Machine Learning"
     url: /notes/ml/index/
     subfolderitems:
-    - page: "Overview"
-      url: /notes/ml/index/
-    - page: "Trade-offs"
-      url: /notes/machine_learning/trade_offs/
-    - page: "Supervised Classification Algorithms"
+    - page: "Supervised Classification"
       url: "/notes/machine_learning/supervised_classification"
-  - title: "Deep Learning"
-    url: /notes/statistics/index/
-    subfolderitems:
-    - page: "Overview"
-      url: /notes/deep_learning/index/
   - title: "Network Analysis"
     url: /notes/network_analysis/
     subfolderitems:

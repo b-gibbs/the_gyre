@@ -803,9 +803,10 @@ permalink: /coursework/stats/racial_disc/
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Question-#1:-What-is-the-appropriate-test-for-this-problem?">Question #1: What is the appropriate test for this problem?
-        <a class="anchor-link" href="#Question-#1:-What-is-the-appropriate-test-for-this-problem?">&#182;</a>
-      </h2>
+      <h3 id="Question-#1:-What-is-the-appropriate-test-for-this-problem?">Q1: Appropriate Test?
+        <a class="anchor-link" href="#1: Appropriate Test?">&#182;</a>
+      </h3>
+      <p>What is the appropriate test for this problem?</p>
       <hr>
       <p>The null hypothesis for this problem is that the proportions in the two populations, from which the two samples are
         drawn, are equal. Therefore, a $Z$-test for proportions will be used. These samples are binomial distributions, and
@@ -924,9 +925,10 @@ permalink: /coursework/stats/racial_disc/
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Question-#2:-Null-&amp;-Alternate-Hypotheses">Question #2: Null &amp; Alternate Hypotheses
-        <a class="anchor-link" href="#Question-#2:-Null-&amp;-Alternate-Hypotheses">&#182;</a>
-      </h2>
+      <h3 class="ilink" id="Question-#2:-Null-&amp;-Alternate-Hypotheses">Q2: Null &amp; Alternate Hypotheses
+        <a class="anchor-link" href="#2:-Null-&amp;-Alternate-Hypotheses">&#182;</a>
+      </h3>
+      <p>What are the null and alternate hypotheses?</p>
       <hr>
       <p>
         <strong>Null Hypothesis</strong>: the probability of success (getting a callback) is the same for both resumes with white-sounding
@@ -945,9 +947,10 @@ permalink: /coursework/stats/racial_disc/
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Question-#3:-Margin-of-Error,-Confidence-Interval-and-p-value-testing">Question #3: Margin of Error, Confidence Interval and p-value testing
-        <a class="anchor-link" href="#Question-#3:-Margin-of-Error,-Confidence-Interval-and-p-value-testing">&#182;</a>
-      </h2>
+      <h3 class="ilink" id="Q3:-Margin-of-Error,-Confidence-Interval-and-p-value-testing">Q3: p-value testing
+        <a class="anchor-link" href="#Q3:-Margin-of-Error,-Confidence-Interval-and-p-value-testing">&#182;</a>
+      </h3>
+      <p>Margin of error, confidence interval and p-value testing</p>
       <hr>
 
     </div>
@@ -958,9 +961,9 @@ permalink: /coursework/stats/racial_disc/
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Frequentist-Approach">Frequentist Approach
+      <h4 id="Frequentist-Approach">Frequentist Approach
         <a class="anchor-link" href="#Frequentist-Approach">&#182;</a>
-      </h3>
+      </h4>
       <p>$$(\hat p_1 - \hat p_2) \pm z*{\sqrt{\frac{\hat p_1(1 - \hat p_1)}{n_1} + \frac{\hat p_2(1-\hat p_2)}{n_2}}}$$</p>
 
     </div>
@@ -1101,9 +1104,9 @@ Margin of err: 	 +/-0.015255406349886438
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Bootstrap">Bootstrap
+      <h4 id="Bootstrap">Bootstrap
         <a class="anchor-link" href="#Bootstrap">&#182;</a>
-      </h3>
+      </h4>
     </div>
   </div>
 </div>
@@ -1210,9 +1213,9 @@ p-value: 0.0
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Analysis:">Analysis:
+      <h4 id="Analysis:">Analysis:
         <a class="anchor-link" href="#Analysis:">&#182;</a>
-      </h3>
+      </h4>
       <p>The p-value for the Frequentist and Boostrap approaches are both well below the p=0.05 threshold so the null hypothesis
         must be rejected in favor of the alternate hypothesis that perception of race based on the name on the resume does
         have an effect on whether an applicant will receive a callback.</p>
@@ -1230,10 +1233,10 @@ p-value: 0.0
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Question-#4:-Write-a-story-describing-the-statistical-significance-in-the-context-of-the-original-problem.">Question #4: Write a story describing the statistical significance in the context of the original problem.
-        <a class="anchor-link"
-          href="#Question-#4:-Write-a-story-describing-the-statistical-significance-in-the-context-of-the-original-problem.">&#182;</a>
-      </h2>
+      <h3 id="Question-#4:-Write-a-story-describing-the-statistical-significance-in-the-context-of-the-original-problem.">Q4: Statistical Significance
+        <a class="anchor-link" href="#Q4:-Statistical-Significance">&#182;</a>
+      </h3>
+      <p>Write a story describing the statistical significance in the context of the original problem.</p>
       <hr>
       <p>It has been proven conclusively that the proportion of callbacks received for resumes with white-sounding names is
         significantly and consistently higher than the proportion of callbacks for resumes with black-sounding names. The
@@ -1248,10 +1251,11 @@ p-value: 0.0
   </div>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Question-#5:-Does-your-analysis-mean-that-race/name-is-the-most-important-factor-in-callback-success?-Why-or-why-not?-If-not,-how-would-you-amend-your-analysis?">Question #5: Does your analysis mean that race/name is the most important factor in callback success? Why or why not?
-        If not, how would you amend your analysis?
-        <a class="anchor-link" href="#Question-#5:-Does-your-analysis-mean-that-race/name-is-the-most-important-factor-in-callback-success?-Why-or-why-not?-If-not,-how-would-you-amend-your-analysis?">&#182;</a>
-      </h2>
+      <h3 id="Q5:-Is-race/name-is-the-most-important-factor-in-callback-success?">Q5: Analysis
+        <a class="anchor-link" href="#Q5:-Is-race/name-is-the-most-important-factor-in-callback-success?">&#182;</a>
+      </h3>
+      <p> Does your analysis mean that race/name is the most important factor in callback success? Why or why not?
+        If not, how would you amend your analysis?</p>
       <hr>
       <p>According to the study's website:</p>
       <blockquote>

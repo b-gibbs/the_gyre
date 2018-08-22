@@ -929,8 +929,12 @@ Difference: 0.038691
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Q: Do you agree with the above analysis and recommendations? Why or why not?  Provide support for your arguments and your own recommendations with a statistically sound analysis:</strong></p>
-<p><strong>Setup an appropriate hypothesis test.</strong></p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="Analysis">&#182;</a></h2>
+<p><strong>Do you agree with the above analysis and recommendations? Why or why not?  Provide support for your arguments and your own recommendations with a statistically sound analysis:</strong></p>
+<h3 id="Hypotheses">Hypotheses<a class="anchor-link" href="Hypotheses">&#182;</a></h3>
+<p>Setup an appropriate hypothesis test.</p>
+<hr>
+
 <div class="alert alert-block alert-success">
 <h4>Analysis:</h4>$H_0$: There is no correlation between the number of discharges and the readmission rate.  
 
@@ -946,7 +950,9 @@ $$H_A: r \neq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Q: Compute and report the observed significance value (or p-value) and report statistical significance for $\alpha$ = .01.</strong></p>
+<h3 id="Statistical Significance">Statistical Significance<a class="anchor-link" href="Statistical Significance">&#182;</a></h3>
+<p>Compute and report the observed significance value (or p-value) and report statistical significance for $\alpha$ = .01.</p>
+<hr>
 
 </div>
 </div>
@@ -1077,7 +1083,10 @@ The threshold for the readmission rate to be deemed excessive is 1.  The mean of
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Q: Discuss statistical significance and practical significance. Do they differ here? How does this change your recommendation to the client?</strong></p>
+<h3 id="Statistical v Practical Significance">Statistical v Practical Significance<a class="anchor-link" href="Statistical v Practical Significance">&#182;</a></h3>
+<p>Discuss statistical significance and practical significance. Do they differ here? How does this change your recommendation to the client?</p>
+<hr>
+
 
 </div>
 </div>
@@ -1099,9 +1108,15 @@ In other words, this might be an instance where statistical significance does no
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Q: Look at the scatterplot above.</strong><br>
-<strong>- What are the advantages and disadvantages of using this plot to convey information?</strong><br>
-<strong>- Construct another plot that conveys the same information in a more direct manner.</strong></p>
+<h3 id="Scatter Plots">Scatter Plots<a class="anchor-link" href="Scatter Plots">&#182;</a></h3>
+<p>Look at the scatterplot above.
+  <ul>
+  <li>What are the advantages and disadvantages of using this plot to convey information?</li>
+  <li>Construct another plot that conveys the same information in a more direct manner.</li>
+  </ul>
+</p>
+<hr>
+
 
 </div>
 </div>
@@ -1122,17 +1137,7 @@ In other words, this might be an instance where statistical significance does no
 <div class="output">
 
 
-<div class="output_area">
 
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.
-  warnings.warn(&#34;The &#39;normed&#39; kwarg is deprecated, and has been &#34;
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 

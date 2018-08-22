@@ -40,7 +40,7 @@ permalink: /coursework/ml/linear_regression/
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-        <img width=600 height=300 src="https://imgs.xkcd.com/comics/sustainable.png" />
+        <img src="/assets/images/linear_regression_hw/sustainable.png" alt=""></p>
       </p>
       <hr>
 
@@ -192,9 +192,9 @@ permalink: /coursework/ml/linear_regression/
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
-      <h1 id="Part-1:-Introduction-to-Linear-Regression">Part 1: Introduction to Linear Regression
+      <h2 id="Part-1:-Introduction-to-Linear-Regression">Part 1: Introduction to Linear Regression
         <a class="anchor-link" href="#Part-1:-Introduction-to-Linear-Regression">&#182;</a>
-      </h1>
+      </h2>
       <h3 id="Purpose-of-linear-regression">Purpose of linear regression
         <a class="anchor-link" href="#Purpose-of-linear-regression">&#182;</a>
       </h3>
@@ -249,7 +249,7 @@ permalink: /coursework/ml/linear_regression/
       </ul>
       <p>$$ y = f(x) = E(Y | X = x)$$</p>
       <p>
-        <img src="images/conditionalmean.png" alt="conditional mean">
+        <img src="/assets/images/linear_regression_hw/conditionalmean.png" alt="conditional mean">
         <a href="http://www.learner.org/courses/againstallodds/about/glossary.html" target="_blank">http://www.learner.org/courses/againstallodds/about/glossary.html</a>
       </p>
       <ul>
@@ -369,12 +369,12 @@ permalink: /coursework/ml/linear_regression/
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
-      <h1 id="Part-2:-Exploratory-Data-Analysis-for-Linear-Relationships">Part 2: Exploratory Data Analysis for Linear Relationships
+      <h2 id="Part-2:-Exploratory-Data-Analysis-for-Linear-Relationships">Part 2: Exploratory Data Analysis for Linear Relationships
         <a class="anchor-link" href="#Part-2:-Exploratory-Data-Analysis-for-Linear-Relationships">&#182;</a>
-      </h1>
-      <p>The <a href="https://archive.ics.uci.edu/ml/datasets/Housing" target="_blank">Boston Housing data set</a> contains information about the housing values in suburbs of Boston. This dataset was originally taken from the StatLib library which is maintained at Carnegie Mellon University and is now available on the UCI Machine Learning Repository.</p>
-      <h2 id="Load-the-Boston-Housing-data-set-from-sklearn">Load the Boston Housing data set from <code>sklearn</code> <a class="anchor-link" href="#Load-the-Boston-Housing-data-set-from-sklearn">&#182;</a>
       </h2>
+      <p>The <a href="https://archive.ics.uci.edu/ml/datasets/Housing" target="_blank">Boston Housing data set</a> contains information about the housing values in suburbs of Boston. This dataset was originally taken from the StatLib library which is maintained at Carnegie Mellon University and is now available on the UCI Machine Learning Repository.</p>
+      <h3 id="Load-the-Boston-Housing-data-set-from-sklearn">Load the Boston Housing data set from <code>sklearn</code> <a class="anchor-link" href="#Load-the-Boston-Housing-data-set-from-sklearn">&#182;</a>
+      </h3>
       <hr>
       <p>This data set is available in the <href="http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" target="_blank">sklearn</a> python module which is how we will access it today.</p>
     </div>
@@ -1398,7 +1398,7 @@ problems.
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="alert alert-info">
-        <h3>Part 2 Checkup Exercise Set I</h3>
+        <h4>Part 2 Checkup Exercise Set I</h4>
 
         <p>
           <b>Exercise:</b> What kind of relationship do you see? e.g. positive, negative? linear? non-linear? Is there anything
@@ -1411,7 +1411,6 @@ problems.
         <p>
           <b>Exercise:</b> What are some other numeric variables of interest? Why do you think they are interesting? Plot scatterplots
           with these variables and *PRICE* (house price) and tell a story about what you see.</p>
-
       </div>
     </div>
   </div>
@@ -2020,7 +2019,7 @@ problems.
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="alert alert-info">
-        <h3>Part 2 Checkup Exercise Set II</h3>
+        <h4>Part 2 Checkup Exercise Set II</h4>
         <p><b>Exercise:</b> In the above histogram, we took the logarithm of the crime rate per capita. Repeat this histogram without taking the log. What was the purpose of taking the log? What do we gain by making this transformation? What do you now notice about this variable that is not obvious without making the transformation?</p>
       </div>
     </div>
@@ -2413,7 +2412,7 @@ Warnings:
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="alert alert-info">
-        <h3>Part 3 Checkup Exercise Set I</h3>
+        <h4>Part 3 Checkup Exercise Set I</h4>
 
         <p>
           <b>Exercise:</b> Create a scatterplot between the predicted prices, available in <code>m.fittedvalues</code> (where `m` is the fitted model) and the original prices. How does the plot look? Do you notice anything interesting or weird in the plot? Comment on what you see.</p>
@@ -2749,7 +2748,7 @@ Warnings:
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="alert alert-info">
-        <h3>Part 3 Checkup Exercise Set II</h3>
+        <h4>Part 3 Checkup Exercise Set II</h4>
 
         <p>
           <b>Exercise:</b> How would you change the model to not fit an intercept term? Would you recommend not having an intercept? Why or why not? For more information on why to include or exclude an intercept, look <a href:https://online.stat.psu.edu/~ajw13/stat501/SpecialTopics/Reg_thru_origin.pdf target="_blank">here</a>.</p>
@@ -3084,7 +3083,7 @@ Warnings:
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="span5 alert alert-info">
-        <h3>Part 3 Checkup Exercise Set III</h3>
+        <h4>Part 3 Checkup Exercise Set III</h4>
 
       </div>
     </div>
@@ -3482,7 +3481,7 @@ Warnings:
     <div class="text_cell_render border-box-sizing rendered_html">
       <hr>
       <div class="alert alert-info">
-        <h3>Part 3 Checkup Exercise Set IV</h3>
+        <h4>Part 3 Checkup Exercise Set IV</h4>
         <p>Let's look at the relationship between `PTRATIO` and housing price.</p>
       </div>
     </div>
@@ -3785,7 +3784,7 @@ F-statistic: 175.1055428756955
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <div class="alert alert-info">
-        <h3>Part 3 Checkup Exercise Set V</h3>
+        <h4>Part 3 Checkup Exercise Set V</h4>
 
         <p>Fit a linear regression model using three independent variables</p>
 
@@ -4128,7 +4127,7 @@ dtype: float64</pre>
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <div class="alert alert-info">
-        <h3>Part 4 Checkup Exercises</h3>
+        <h4>Part 4 Checkup Exercises</h4>
 
         <p>
           <b>Exercise:</b> Find another variable (or two) to add to the model we built in Part 3. Compute the $F$-test comparing
@@ -4439,7 +4438,7 @@ Difference: 	142.48947793001253
   <div class="inner_cell">
     <div class="text_cell_render border-box-sizing rendered_html">
       <div class="alert alert-info">
-        <h3>Part 5 Checkup Exercises</h3>
+        <h4>Part 5 Checkup Exercises</h4>
 
         <p>Take the reduced model from Part 3 to answer the following exercises. Take a look at <a href="http://mpastell.com/2013/04/19/python_regression" target="_blank">this blog post</a> for more information on using statsmodels to construct these plots.</p>
 

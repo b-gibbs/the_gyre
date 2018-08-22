@@ -78,8 +78,7 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
+
 <h2 id="Requirements-of-the-Position"><strong>Requirements of the Position</strong><a class="anchor-link" href="#Requirements-of-the-Position">&#182;</a></h2><p>Defensive Backs' primary responsibility is to guard against the pass by covering the opposing offense's wide receivers.  This requires them to be able to run fast, jump high, maneuver quickly and have some instincts for finding a ball in the air while doing so.  Being sure-handed is also helpful if they are able to put themselves in positions to intercept the ball.</p>
 <p>Defensive Backs must also be big enough and strong enough to make tackles if the pass is completed and on the occasions when they must tackle a 230+-pound running back who has made it through the Defensive Line and past the Linebackers.  And, they must be durable enough to avoid injuries while doing so.</p>
 <p>Finally, they must be 'football smart' enough to learn their responsibilities for each defensive play and to read opposing offenses' formations to be able to anticipate each play.</p>
@@ -129,8 +128,7 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
+
 <h2 id="The-Path-to-Success"><strong>The Path to Success</strong><a class="anchor-link" href="#The-Path-to-Success">&#182;</a></h2><p>According to an <a href="https://www.cbsnews.com/news/the-odds-of-playing-college-sports/" target="_blank"> article from CBS News</a>, the odds that a high school senior football player will eventually be drafted by an NFL team are 0.08%.  One in 16 high school senior football players will play college football at some level, some of those players will stop playing during college, and, for those who do continue to play through their senior year of college, only 1 in 50 will be drafted by an NFL team.</p>
 <p>There are several possible paths to the NFL, but the typical path involves being a high school standout, getting a full scholarship to play for an NCAA Division I team, gaining enough recognition to be invited to participate in the NFL Combine and eventually being drafted by an NFL team in the Spring of a player's senior year of college.</p>
 <p>Alternatively, a player may stand out at a Division II or even a Division III school, may attend a college Pro Day instead of the Combine and may even play in the Canadian Football League for a year or two before making their way to the NFL.  And, a player not drafted may may opt to walk-on to a team's Training Camp, a period of time prior to the start of each season where players warm-up for the season, learn new plays and many try to prove that they deserve a place at or near the top of the team's depth chart.</p>
@@ -143,8 +141,6 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
 <h2 id="Data:-What-Would-Be-Useful?"><strong>Data: What Would Be Useful?</strong><a class="anchor-link" href="#Data:-What-Would-Be-Useful?">&#182;</a></h2><p>Useful data can be broken into three categories:</p>
 <ol>
 <li><strong>football experience</strong><ul>
@@ -181,8 +177,6 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
 <h2 id="Data:-What-is-Available?"><strong>Data: What is Available?</strong><a class="anchor-link" href="#Data:-What-is-Available?">&#182;</a></h2><p><strong>Football Experience</strong>:  High school statistics are not widely available and NFL statistics are irrelevant because I'm approaching this as a recruiter, looking for talent at the college level to draft and develop.  So, NCAA game statistics are the obvious choice.</p>
 <p>I decided that comparing players who played in Divison II or Division III against players in Division I was unfair and not useful.  That's not to say that game statistics for Division II and III players are irrelevant, but, in a machine learning exercise, DII &amp; DIII statistics would have to be discounted at some rate to provide for the difference in the speed of the game and the skills of the players at the different levels.</p>
 <p><strong>Raw Athleticism</strong>:  The NFL Scouting Combine is an invitation-only event that is held in Indianapolis every year in February or March.  Results from the Combine are ideal for testing raw athleticism.  In particular, the 40-yard dash, 3 cone drill, vertical leap and shuttle drills test a player's speed, acceleration, agility and leaping ability.  The downside to using this data is that the event is invitation-only, and not all players who play in the NFL participate in the Combine.  As a result, this data is not available for all NCAA Division I players, or, for all NFL players.</p>
@@ -195,9 +189,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
-<h2 id="Data-Collection-and-Cleaning"><strong>Data Collection and Cleaning</strong><a class="anchor-link" href="#Data-Collection-and-Cleaning">&#182;</a></h2><h3 id="NCAA-Bios---Importing-.csvs-from-cfbstats.com"><strong>NCAA Bios</strong> - Importing .csvs from cfbstats.com<a class="anchor-link" href="#NCAA-Bios---Importing-.csvs-from-cfbstats.com">&#182;</a></h3><hr>
+<h2 id="Data-Collection-and-Cleaning"><strong>Data Collection and Cleaning</strong><a class="anchor-link" href="#Data-Collection-and-Cleaning">&#182;</a></h2>
+<h3 id="NCAA-Bios---Importing-.csvs-from-cfbstats.com"><strong>NCAA Bios</strong> - Importing .csvs from cfbstats.com<a class="anchor-link" href="#NCAA-Bios---Importing-.csvs-from-cfbstats.com">&#182;</a></h3><hr>
 <p>I found a collection of .csv files for NCAA players from 2005 - 2013 hosted on someone's Google Drive from a link in a subreddit.  Later, I learned that that data set was also posted on <a href="https://www.kaggle.com/mhixon/college-football-statistics" target="_blank">Kaggle</a>, and that it was initially an open database hosted at <a href="http://www.cfbstats.com" target="_blank">cfbstats.com</a>.  That database disappeared behind a (very expensive) paywall in 2014.  The data set posted on Kaggle had been downloaded by someone just before the site put up the paywall in 2014.</p>
 <p>I wrote to cfbstats.com, explained that I was a student and that I wanted to use their data for a data science project.  I asked if they had acadmeic rates, but never heard back from them.  It wouldn't be unreasonable to assume that even the data from 2005 - 2013 improved once access to that data disappeared behind the paywall.  Having access to that data would have saved me a lot of time and could have provided more complete and possibly more reliable data.  If I were actually getting paid for this work by an NFL team, I would have pushed them to purchase access to this data.</p>
 <p>This was the most complete source of NCAA data I found.  It contained not only game stats, but also biographical information, including height, weight and home state, which figured to be useful for the reasons stated above.  My first concern was that it only covered players from 2005 - 2013.  I had already set the bar for success at 3+ years in the NFL, which meant that in order to have played at least 3 years in the NFL, a player would have left college after the 2014 season.  Despite the fact that this data set did not contain game data for the NCAA 2014 season, I decided to proceed with it.</p>
@@ -211,8 +204,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' .duplicated() function, but also by looking through each name for slight variations on the name.<br>
-<strong>2. Aggregated statistics were inaccurate:</strong> Within a given year, each player's stats were provided on a game-by-game basis, which I aggregated to get total stats for the year.  After some initial Exploratory Data Analysis (<strong>'EDA'</strong>) I found these stats to be consistently lower than the stats available on the ncaa.org website.</p>
+<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' .duplicated() function, but also by looking through each name for slight variations on the name.</p>
+<p><strong>2. Aggregated statistics were inaccurate:</strong> Within a given year, each player's stats were provided on a game-by-game basis, which I aggregated to get total stats for the year.  After some initial Exploratory Data Analysis (<strong>'EDA'</strong>) I found these stats to be consistently lower than the stats available on the ncaa.org website.</p>
 
 </div>
 </div>
@@ -327,11 +320,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
 <h3 id="NCAA-Stats---Using-BS4-to-scrape-stats-from-the-web"><strong>NCAA Stats</strong> - Using BS4 to scrape stats from the web<a class="anchor-link" href="#NCAA-Stats---Using-BS4-to-scrape-stats-from-the-web">&#182;</a></h3><hr>
 <p>After an appropriate period of mourning over the loss of a single, clean data source, I decided I had to scrape the <a href="https://web1.ncaa.org/stats/StatsSrv/careersearch" target="_blank">ncaa.org website</a>.  I used BeautifulSoup4 to write a scraper in VS Code that would first query a team, scrape the team's rosters for DBs from 2005 - 2017 to build a unique set of players and their ids, then query each player's id for the player's career stats.</p>
-<br>
 
 <a class="anchor" name="ncaa_scraper.py"></a>
 <a href="/coursework/projects/nfl_defensive_back/ncaa_scraper"><button type="button" class="btn btn-primary">ncaa_scraper.py</button></a>
@@ -492,10 +482,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that, like the cfbstats.com data above, some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' <code>.duplicated()</code> function, but also by looking through each name for slight variations on the name.<br>
-<br>
-<strong>2. Class years overlapped</strong>: Many players had mislabeled classes.  For example, a player being listed as a junior for two years' worth of stats.  I created a class with some methods to correct Issue #1 above and to deduplicate duplicated classes in an efficient and accurate fashion.</p>
-<br>
+<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that, like the cfbstats.com data above, some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' <code>.duplicated()</code> function, but also by looking through each name for slight variations on the name.</p>
+<p><strong>2. Class years overlapped</strong>: Many players had mislabeled classes.  For example, a player being listed as a junior for two years' worth of stats.  I created a class with some methods to correct Issue #1 above and to deduplicate duplicated classes in an efficient and accurate fashion.</p>
 <a class="anchor" name="ncaa_deduper.ipynb"></a>
 <a href="/coursework/projects/nfl_defensive_back/ncaa_deduper_notebook"><button type="button" class="btn btn-primary">NCAA Deduper.ipynb</button></a>
 
@@ -507,8 +495,7 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
+
 <h3 id="NFL-Scouting-Combine---Importing-from-.csv"><strong>NFL Scouting Combine</strong> - Importing from .csv<a class="anchor-link" href="#NFL-Scouting-Combine---Importing-from-.csv">&#182;</a></h3><hr>
 
 </div>
@@ -646,8 +633,6 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<br></p>
 <h3 id="NFL---Accessing-Data-Using-an-API"><strong>NFL</strong> - Accessing Data Using an API<a class="anchor-link" href="#NFL---Accessing-Data-Using-an-API">&#182;</a></h3><hr>
 <p>I really only needed the number of seasons a player played in the NFL, but I collected a few additional biographical statistics while I was accessing the API.  I chose the sportradar.com API because it contained the information I needed along with some additional biographical information and it appeared to be complete and accurate.</p>
 <p>Their database is behind a paywall, but I was able to sign up for a trial.  When it became apparent that I needed more data than the trial terms would allow, I contacted them and they graciously raised my limits to allow me to download the information I needed.</p>

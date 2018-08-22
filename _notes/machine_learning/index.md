@@ -2,7 +2,7 @@
 title: Notes - Machine Learning
 excerpt: Section header for all machine learning notes.
 toc: false
-permalink: /notes/ml/index/
+permalink: /notes/ml/overview/
 ---
 
 

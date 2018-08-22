@@ -31,7 +31,7 @@ permalink: /coursework/ml/logistic_regression/
             <p>We turn our attention to
                 <strong>classification</strong>. Classification tries to predict, which of a small set of classes, an observation
                 belongs to. Mathematically, the aim is to find $y$, a
-                <strong>label</strong> based on knowing a feature vector $\x$. For instance, consider predicting gender from seeing
+                <strong>label</strong> based on knowing a feature vector $x$. For instance, consider predicting gender from seeing
                 a person's face, something we do fairly well as humans. To have a machine do this well, we would typically
                 feed the machine a bunch of images of people which have been labelled "male" or "female" (the training set),
                 and have it learn the gender of the person in the image from the labels and the
@@ -44,7 +44,7 @@ permalink: /coursework/ml/logistic_regression/
                 two classes makes the problem
                 <em>linearly separable</em>. Support Vector Machines (SVM) are an example of a maximum-margin classifier.</p>
             <p>
-                <img src="/assets/images/onelinesplit.png" alt="Splitting using a single line">
+                <img src="/assets/images/logistic_regression_hw/onelinesplit.png" alt="Splitting using a single line">
             </p>
         </div>
     </div>
@@ -343,7 +343,7 @@ permalink: /coursework/ml/logistic_regression/
         <div class="text_cell_render border-box-sizing rendered_html">
             <p>Remember that the form of data we will use always is</p>
             <p>
-                <img src="images/data.png" alt="dataform">
+                <img src="/assets/images/logistic_regression_hw/data.png" alt="dataform">
             </p>
             <p>with the "response" or "label" $y$ as a plain array of 0s and 1s for binary classification. Sometimes we will
                 also see -1 and +1 instead. There are also
@@ -359,7 +359,7 @@ permalink: /coursework/ml/logistic_regression/
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <div class="alert alert-info">
-                <h3>Checkup Exercise Set I</h3>
+                <h4>Checkup Exercise Set I</h4>
                 <ul>
                     <li><b>Exercise:</b> Create a scatter plot of Weight vs. Height</li>
                     <li><b>Exercise:</b> Color the points differently by Gender</li>
@@ -559,7 +559,7 @@ permalink: /coursework/ml/logistic_regression/
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <div class="alert alert-info">
-                <h3>Checkup Exercise Set II</h3>
+                <h4>Checkup Exercise Set II</h4>
                 <b>Exercise:</b> Implement the following search procedure to find a good model
                 <ul>
                     <li> You are given a list of possible values of `C` below
@@ -628,7 +628,7 @@ Best C: 0.1
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <div class="alert alert-info">
-                <h3>Checkup Exercise Set III</h3>
+                <h4>Checkup Exercise Set III</h4>
                 <b>Exercise:</b> Now you want to estimate how this model will predict on unseen data in the following way:
                 <ol>
                     <li> Use the `C` you obtained from the procedure earlier and train a Logistic Regression on the training data</li>
@@ -703,9 +703,9 @@ Best C: 0.1
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <div class="alert alert-info">
-                <h3>Checkup Exercise Set IV</h3>
+                <h4>Checkup Exercise Set IV</h4>
 
-                <b>Exercise:</b> Use Scikit-learn's <a href="http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html" target="blank_">`GridSearchCV`</a> tool to perform cross validation and grid search. 
+                <b>Exercise:</b> Use Scikit-learn's <a href="http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html" target="blank_"><code>GridSearchCV</code></a> tool to perform cross validation and grid search. 
                 <ol>
                     <li>Instead of writing your own loops above to iterate over the model parameters, can you use `GridSearchCV` to find the best model over the training set?</li>
                     <li>Does it give you the same best value of `C`?</li>
