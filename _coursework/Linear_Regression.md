@@ -12,7 +12,7 @@ permalink: /coursework/ml/linear_regression/
       </h1>
       <hr>
       <p>This is a very quick run-through of some basic statistical concepts, adapted from
-        <a href="https://github.com/cs109/2015lab4">Lab 4 in Harvard's CS109</a> course. Please feel free to try the original lab if you're feeling ambitious :-) The
+        <a href="https://github.com/cs109/2015lab4" target="_blank">Lab 4 in Harvard's CS109</a> course. Please feel free to try the original lab if you're feeling ambitious :-) The
         CS109 git repository also has the solutions if you're stuck.</p>
       <ul>
         <li>Linear Regression Models</li>
@@ -220,7 +220,7 @@ permalink: /coursework/ml/linear_regression/
       </h3>
       <hr>
       <p>
-        <a href="http://en.wikipedia.org/wiki/Linear_regression">Linear Regression</a> is a method to model the relationship between a set of independent variables $X$ (also knowns
+        <a href="http://en.wikipedia.org/wiki/Linear_regression" target="_blank">Linear Regression</a> is a method to model the relationship between a set of independent variables $X$ (also knowns
         as explanatory variables, features, predictors) and a dependent variable $Y$. This method assumes the relationship
         between each predictor $X$ is
         <strong>linearly</strong> related to the dependent variable $Y$. The most basic linear regression model contains one independent
@@ -250,7 +250,7 @@ permalink: /coursework/ml/linear_regression/
       <p>$$ y = f(x) = E(Y | X = x)$$</p>
       <p>
         <img src="images/conditionalmean.png" alt="conditional mean">
-        <a href="http://www.learner.org/courses/againstallodds/about/glossary.html">http://www.learner.org/courses/againstallodds/about/glossary.html</a>
+        <a href="http://www.learner.org/courses/againstallodds/about/glossary.html" target="_blank">http://www.learner.org/courses/againstallodds/about/glossary.html</a>
       </p>
       <ul>
         <li>The goal is to estimate the coefficients (e.g. $\beta_0$ and $\beta_1$). We represent the estimates of the coefficients
@@ -285,7 +285,7 @@ permalink: /coursework/ml/linear_regression/
       </h3>
       <hr>
       <p>
-        <a href="http://en.wikipedia.org/wiki/Least_squares">Least squares</a> is a method that can estimate the coefficients of a linear model by minimizing the squared residuals:</p>
+        <a href="http://en.wikipedia.org/wiki/Least_squares" target="_blank">Least squares</a> is a method that can estimate the coefficients of a linear model by minimizing the squared residuals:</p>
       <p>$$ \mathscr{L} = \sum_{i=1}^N \epsilon_i = \sum_{i=1}^N \left( y_i - \hat{y}_i \right)^2 = \sum_{i=1}^N \left(y_i -
         \left(\beta_0 + \beta_1 x_i\right)\right)^2 $$</p>
       <p>where $N$ is the number of observations and $\epsilon$ represents a residual or error, ACTUAL - PREDICTED.</p>
@@ -372,11 +372,11 @@ permalink: /coursework/ml/linear_regression/
       <h1 id="Part-2:-Exploratory-Data-Analysis-for-Linear-Relationships">Part 2: Exploratory Data Analysis for Linear Relationships
         <a class="anchor-link" href="#Part-2:-Exploratory-Data-Analysis-for-Linear-Relationships">&#182;</a>
       </h1>
-      <p>The <a href="https://archive.ics.uci.edu/ml/datasets/Housing">Boston Housing data set</a> contains information about the housing values in suburbs of Boston. This dataset was originally taken from the StatLib library which is maintained at Carnegie Mellon University and is now available on the UCI Machine Learning Repository.</p>
+      <p>The <a href="https://archive.ics.uci.edu/ml/datasets/Housing" target="_blank">Boston Housing data set</a> contains information about the housing values in suburbs of Boston. This dataset was originally taken from the StatLib library which is maintained at Carnegie Mellon University and is now available on the UCI Machine Learning Repository.</p>
       <h2 id="Load-the-Boston-Housing-data-set-from-sklearn">Load the Boston Housing data set from <code>sklearn</code> <a class="anchor-link" href="#Load-the-Boston-Housing-data-set-from-sklearn">&#182;</a>
       </h2>
       <hr>
-      <p>This data set is available in the <href="http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston">sklearn</a> python module which is how we will access it today.</p>
+      <p>This data set is available in the <href="http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" target="_blank">sklearn</a> python module which is how we will access it today.</p>
     </div>
   </div>
 </div>
@@ -1927,10 +1927,10 @@ problems.
       </h3>
       <hr>
       <p>
-        <a href="https://stanford.edu/~mwaskom/software/seaborn/">Seaborn</a> is a cool Python plotting library built on top of matplotlib. It provides convenient syntax and shortcuts
+        <a href="https://stanford.edu/~mwaskom/software/seaborn/" target="_blank">Seaborn</a> is a cool Python plotting library built on top of matplotlib. It provides convenient syntax and shortcuts
         for many common types of plots, along with better-looking defaults.</p>
       <p>We can also use
-        <a href="https://stanford.edu/~mwaskom/software/seaborn/tutorial/regression.html#functions-to-draw-linear-regression-models">seaborn regplot</a> for the scatterplot above. This provides automatic linear regression fits (useful for data exploration
+        <a href="https://stanford.edu/~mwaskom/software/seaborn/tutorial/regression.html#functions-to-draw-linear-regression-models" target="_blank">seaborn regplot</a> for the scatterplot above. This provides automatic linear regression fits (useful for data exploration
         later on). Here's one example below.</p>
 
     </div>
@@ -2239,13 +2239,13 @@ problems.
       </h3>
       <hr>
       <p>
-        <a href="http://statsmodels.sourceforge.net/">Statsmodels</a> is a great Python library for a lot of basic and inferential statistics. It also provides basic regression
+        <a href="http://statsmodels.sourceforge.net/" target="_blank">Statsmodels</a> is a great Python library for a lot of basic and inferential statistics. It also provides basic regression
         functions using an R-like syntax, so it's commonly used by statisticians. While we don't cover statsmodels officially
         in the Data Science Intensive workshop, it's a good library to have in your toolbox. Here's a quick example of what
         you could do with it. The version of least-squares we will use in statsmodels is called
         <em>ordinary least-squares (OLS)</em>. There are many other versions of least-squares such as
-        <a href="https://en.wikipedia.org/wiki/Partial_least_squares_regression">partial least squares (PLS)</a> and
-        <a href="https://en.wikipedia.org/wiki/Iteratively_reweighted_least_squares">weighted least squares (WLS)</a>.</p>
+        <a href="https://en.wikipedia.org/wiki/Partial_least_squares_regression" target="_blank">partial least squares (PLS)</a> and
+        <a href="https://en.wikipedia.org/wiki/Iteratively_reweighted_least_squares" target="_blank">weighted least squares (WLS)</a>.</p>
 
     </div>
   </div>
@@ -2391,7 +2391,7 @@ Warnings:
         <code>np.log</code> for extremely-skewed data, or fit a model without an intercept by including
         <code>- 1</code> in the formula. For a quick run-down of further uses see the
         <code>statsmodels</code>
-        <a href="http://statsmodels.sourceforge.net/devel/example_formulas.html">help page</a>.</p>
+        <a href="http://statsmodels.sourceforge.net/devel/example_formulas.html" target="_blank">help page</a>.</p>
 
     </div>
   </div>
@@ -2554,7 +2554,7 @@ Warnings:
       </h4>
       <hr>
       <p>Check out the scikit-learn
-        <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">docs here</a>. We have listed the main functions here. Most machine learning models in scikit-learn follow this same
+        <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html" target="_blank">docs here</a>. We have listed the main functions here. Most machine learning models in scikit-learn follow this same
         API of fitting a model with
         <code>fit</code>, making predictions with
         <code>predict</code> and the appropriate scoring function
@@ -2752,7 +2752,7 @@ Warnings:
         <h3>Part 3 Checkup Exercise Set II</h3>
 
         <p>
-          <b>Exercise:</b> How would you change the model to not fit an intercept term? Would you recommend not having an intercept? Why or why not? For more information on why to include or exclude an intercept, look <a href:https://online.stat.psu.edu/~ajw13/stat501/SpecialTopics/Reg_thru_origin.pdf>here</a>.</p>
+          <b>Exercise:</b> How would you change the model to not fit an intercept term? Would you recommend not having an intercept? Why or why not? For more information on why to include or exclude an intercept, look <a href:https://online.stat.psu.edu/~ajw13/stat501/SpecialTopics/Reg_thru_origin.pdf target="_blank">here</a>.</p>
       </div>
       <div class="alert alert-success">
         <p>If the `fit_intercept` parameter is set to `False` upon initialization of a `LinearRegression` instance, no intercept
@@ -4441,7 +4441,7 @@ Difference: 	142.48947793001253
       <div class="alert alert-info">
         <h3>Part 5 Checkup Exercises</h3>
 
-        <p>Take the reduced model from Part 3 to answer the following exercises. Take a look at <a href="http://mpastell.com/2013/04/19/python_regression">this blog post</a> for more information on using statsmodels to construct these plots.</p>
+        <p>Take the reduced model from Part 3 to answer the following exercises. Take a look at <a href="http://mpastell.com/2013/04/19/python_regression" target="_blank">this blog post</a> for more information on using statsmodels to construct these plots.</p>
 
         <p>
           <b>Exercise:</b> Construct a fitted values versus residuals plot. What does the plot tell you? Are there any violations

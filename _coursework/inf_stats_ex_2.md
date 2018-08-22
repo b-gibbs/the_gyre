@@ -54,7 +54,7 @@ permalink: /coursework/stats/racial_disc/
       <ul>
         <li>In the control panel at the top, choose Cell &gt; Cell Type &gt; Markdown</li>
         <li>Markdown syntax:
-          <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
+          <a href="://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
         </li>
       </ul>
       <h4 id="Resources">Resources
@@ -62,16 +62,16 @@ permalink: /coursework/stats/racial_disc/
       </h4>
       <ul>
         <li>Experiment information and data source:
-          <a href="http://www.povertyactionlab.org/evaluation/discrimination-job-market-united-states">http://www.povertyactionlab.org/evaluation/discrimination-job-market-united-states</a>
+          <a href="http://www.povertyactionlab.org/evaluation/discrimination-job-market-united-states" target="_blank">http://www.povertyactionlab.org/evaluation/discrimination-job-market-united-states</a>
         </li>
         <li>Scipy statistical methods:
-          <a href="http://docs.scipy.org/doc/scipy/reference/stats.html">http://docs.scipy.org/doc/scipy/reference/stats.html</a>
+          <a href="http://docs.scipy.org/doc/scipy/reference/stats.html" target="_blank">http://docs.scipy.org/doc/scipy/reference/stats.html</a>
         </li>
         <li>Markdown syntax:
-          <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
+          <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
         </li>
         <li>Formulas for the Bernoulli distribution:
-          <a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">https://en.wikipedia.org/wiki/Bernoulli_distribution</a>
+          <a href="https://en.wikipedia.org/wiki/Bernoulli_distribution" target="_blank">https://en.wikipedia.org/wiki/Bernoulli_distribution</a>
         </li>
       </ul>
       <hr>

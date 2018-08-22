@@ -30,19 +30,18 @@ layout: default
         {% endif %}
       </nav>
     </div>
+    
 
+
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+      {% if page.toc %}
+        <aside class="sidebar__right">
+          <a href="{{ page.section }}"><button type="button" class="btn btn-primary">Back</button></a>
+        </aside>
+      {% endif %}
+    </div>
     <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-      <div class="container sticky-top">
-        <div class="row">
-          <div class="col-xl">
-              <h1>{{ page.title }}</h1>
-          </div>
-          <div class="col-md">
-              <a href="{{ page.section }}"><button type="button" class="btn btn-primary">Back</button></a>
-          </div>
-        </div>
-      </div>
-      <br>
+      <h2>{{ page.title }}</h2>
       {{ content }}
     </main> 
   </div>

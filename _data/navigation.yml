@@ -50,6 +50,8 @@ notes:
       url: /notes/ml/index/
     - page: "Trade-offs"
       url: /notes/machine_learning/trade_offs/
+    - page: "Supervised Classification Algorithms"
+      url: "/notes/machine_learning/supervised_classification"
   - title: "Deep Learning"
     url: /notes/statistics/index/
     subfolderitems:

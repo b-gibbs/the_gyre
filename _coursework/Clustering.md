@@ -8,7 +8,7 @@ permalink: /coursework/ml/clustering/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Customer-Segmentation-using-Clustering">Customer Segmentation using Clustering<a class="anchor-link" href="#Customer-Segmentation-using-Clustering">&#182;</a></h1><hr>
-<p>This mini-project is based on <a href="http://blog.yhat.com/posts/customer-segmentation-using-python.html">this blog post</a> by yhat. Please feel free to refer to the post for additional information, and solutions.</p>
+<p>This mini-project is based on <a href="http://blog.yhat.com/posts/customer-segmentation-using-python.html" target="_blank">this blog post</a> by yhat. Please feel free to refer to the post for additional information, and solutions.</p>
 
 </div>
 </div>
@@ -283,12 +283,12 @@ permalink: /coursework/ml/clustering/
 <div class="alert alert-info">
 <h3>Checkup Exercise Set I</h3>
 
-<p><b>Exercise:</b> Create a data frame where each row has the following columns (Use the pandas [`merge`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html) and [`pivot_table`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html) functions for this purpose):
+<p><b>Exercise:</b> Create a data frame where each row has the following columns (Use the pandas <code>merge</code> and <code>pivot_table</code> functions for this purpose):</p>
 <ul>
-<li> customer_name
-<li> One column for each offer, with a 1 if the customer responded to the offer
+<li> customer_name </li>
+<li> One column for each offer, with a 1 if the customer responded to the offer</li>
 </ul>
-<p>Make sure you also deal with any weird values such as `NaN`. Read the documentation to develop your solution.</p>
+<p>Make sure you also deal with any weird values such as <code>NaN</code>. Read the documentation to develop your solution.</p>
 </div>
 </div>
 </div>
@@ -536,7 +536,7 @@ permalink: /coursework/ml/clustering/
 
 <p><b>Exercise:</b></p> 
 <ul>
-<li> What values of $SS$ do you believe represent better clusterings? Why?
+<li> What values of $SS$ do you believe represent better clusterings? Why? </li>
 </ul>
 </div>
 </div>
@@ -580,7 +580,7 @@ permalink: /coursework/ml/clustering/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-info">
-<li> Write code that applies the [`KMeans`](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html) clustering method from scikit-learn to this matrix. </li>
+<li> Write code that applies the <code>KMeans</code> clustering method from scikit-learn to this matrix. </li>
 <li> Construct a plot showing $SS$ for each $K$ and pick $K$ using this plot. For simplicity, test $2 \le K \le 10$. </li>
 </div>
 </div>
@@ -751,8 +751,8 @@ permalink: /coursework/ml/clustering/
 </tr>
 </tbody>
 </table>
-<p>&lt;/pre&gt;
-Source: <a href="http://www.stat.berkeley.edu/~spector/s133/Clus.html">http://www.stat.berkeley.edu/~spector/s133/Clus.html</a></p>
+</pre>
+<p>Source: <a href="http://www.stat.berkeley.edu/~spector/s133/Clus.html" target="_blank">http://www.stat.berkeley.edu/~spector/s133/Clus.html</a></p>
 
 </div>
 </div>
@@ -761,7 +761,7 @@ Source: <a href="http://www.stat.berkeley.edu/~spector/s133/Clus.html">http://ww
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fortunately, scikit-learn provides a function to compute this for us (phew!) called <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html"><code>sklearn.metrics.silhouette_score</code></a>. Take a look at <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">this article</a> on picking $K$ in scikit-learn, as it will help you in the next exercise set.</p>
+<p>Fortunately, scikit-learn provides a function to compute this for us (phew!) called <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html" target="_blank"><code>sklearn.metrics.silhouette_score</code></a>. Take a look at <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html" target="_blank">this article</a> on picking $K$ in scikit-learn, as it will help you in the next exercise set.</p>
 
 </div>
 </div>
@@ -1222,7 +1222,7 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 <li>V-Measure</li>
 <li>Fowlkes–Mallows index</li>
 </ul>
-<p>See <a href="http://scikit-learn.org/stable/modules/clustering.html">this article</a> for more information about these metrics.</p>
+<p>See <a href="http://scikit-learn.org/stable/modules/clustering.html" target="_blank">this article</a> for more information about these metrics.</p>
 
 </div>
 </div>
@@ -1247,17 +1247,17 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 <p><b>Exercise:</b> Use PCA to plot your clusters:</p>
 
 <ul>
-<li> Use scikit-learn's [`PCA`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) function to reduce the dimensionality of your clustering data to 2 components
-<li> Create a data frame with the following fields:
+<li> Use scikit-learn's [`PCA`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) function to reduce the dimensionality of your clustering data to 2 components</li>
+<li> Create a data frame with the following fields:</li>
   <ul>
-  <li> customer name
-  <li> cluster id the customer belongs to
-  <li> the two PCA components (label them `x` and `y`)
+  <li> customer name </li>
+  <li> cluster id the customer belongs to </li>
+  <li> the two PCA components (label them `x` and `y`)</li>
   </ul>
-<li> Plot a scatterplot of the `x` vs `y` columns
-<li> Color-code points differently based on cluster ID
-<li> How do the clusters look? 
-<li> Based on what you see, what seems to be the best value for $K$? Moreover, which method of choosing $K$ seems to have produced the optimal result visually?
+<li> Plot a scatterplot of the `x` vs `y` columns</li>
+<li> Color-code points differently based on cluster ID</li>
+<li> How do the clusters look? </li>
+<li> Based on what you see, what seems to be the best value for $K$? Moreover, which method of choosing $K$ seems to have produced the optimal result visually?</li>
 </ul>
 </div>
 </div>
@@ -1688,7 +1688,7 @@ For n_clusters = 2 The average silhouette_score is : 0.09174871508750351
 </li>
 <li><p><strong>Spectral Clustering</strong> uses the eigenvalues of a similarity matrix to reduce the dimensionality of the data before clustering in a lower dimensional space. This is tangentially similar to what we did to visualize k-means clusters using PCA. The number of clusters must be known a priori.</p>
 </li>
-<li><p><strong>Ward's Method</strong> applies to hierarchical clustering. Hierarchical clustering algorithms take a set of data and successively divide the observations into more and more clusters at each layer of the hierarchy. Ward's method is used to determine when two clusters in the hierarchy should be combined into one. It is basically an extension of hierarchical clustering. Hierarchical clustering is <em>divisive</em>, that is, all observations are part of the same cluster at first, and at each successive iteration, the clusters are made smaller and smaller. With hierarchical clustering, a hierarchy is constructed, and there is not really the concept of "number of clusters." The number of clusters simply determines how low or how high in the hierarchy we reference and can be determined empirically or by looking at the <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.cluster.hierarchy.dendrogram.html">dendogram</a>.</p>
+<li><p><strong>Ward's Method</strong> applies to hierarchical clustering. Hierarchical clustering algorithms take a set of data and successively divide the observations into more and more clusters at each layer of the hierarchy. Ward's method is used to determine when two clusters in the hierarchy should be combined into one. It is basically an extension of hierarchical clustering. Hierarchical clustering is <em>divisive</em>, that is, all observations are part of the same cluster at first, and at each successive iteration, the clusters are made smaller and smaller. With hierarchical clustering, a hierarchy is constructed, and there is not really the concept of "number of clusters." The number of clusters simply determines how low or how high in the hierarchy we reference and can be determined empirically or by looking at the <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.cluster.hierarchy.dendrogram.html" target="_blank">dendogram</a>.</p>
 </li>
 <li><p><strong>Agglomerative Clustering</strong> is similar to hierarchical clustering but but is not divisive, it is <em>agglomerative</em>. That is, every observation is placed into its own cluster and at each iteration or level or the hierarchy, observations are merged into fewer and fewer clusters until convergence. Similar to hierarchical clustering, the constructed hierarchy contains all possible numbers of clusters and it is up to the analyst to pick the number by reviewing statistics or the dendogram.</p>
 </li>

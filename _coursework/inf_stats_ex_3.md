@@ -16,9 +16,9 @@ permalink: /coursework/stats/hosp_read/
 </ul>
 <p>More instructions provided below. Include your work <strong>in this notebook and submit to your Github account</strong>.</p>
 <h3 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h3><ul>
-<li>Data source: <a href="https://data.medicare.gov/Hospital-Compare/Hospital-Readmission-Reduction/9n3s-kdb3">https://data.medicare.gov/Hospital-Compare/Hospital-Readmission-Reduction/9n3s-kdb3</a></li>
-<li>More information: <a href="http://www.cms.gov/Medicare/medicare-fee-for-service-payment/acuteinpatientPPS/readmissions-reduction-program.html">http://www.cms.gov/Medicare/medicare-fee-for-service-payment/acuteinpatientPPS/readmissions-reduction-program.html</a></li>
-<li>Markdown syntax: <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a></li>
+<li>Data source: <a href="https://data.medicare.gov/Hospital-Compare/Hospital-Readmission-Reduction/9n3s-kdb3" target="_blank">https://data.medicare.gov/Hospital-Compare/Hospital-Readmission-Reduction/9n3s-kdb3</a></li>
+<li>More information: <a href="http://www.cms.gov/Medicare/medicare-fee-for-service-payment/acuteinpatientPPS/readmissions-reduction-program.html" target="_blank">http://www.cms.gov/Medicare/medicare-fee-for-service-payment/acuteinpatientPPS/readmissions-reduction-program.html</a></li>
+<li>Markdown syntax: <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a></li>
 </ul>
 <hr>
 
@@ -213,7 +213,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <p>You can compose in notebook cells using Markdown:</p>
 <ul>
 <li>In the control panel at the top, choose Cell &gt; Cell Type &gt; Markdown</li>
-<li>Markdown syntax: <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a></li>
+<li>Markdown syntax: <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a></li>
 </ul>
 <hr>
 

@@ -1431,7 +1431,7 @@ avg / total       0.71      0.72      0.71       308
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cross-Validation"><a href="http://scikit-learn.org/stable/modules/cross_validation.html#cross-validation">Cross-Validation</a><a class="anchor-link" href="#Cross-Validation">&#182;</a></h2><h3 id="cross_val_score()"><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html"><strong>cross_val_score()</strong></a><a class="anchor-link" href="#cross_val_score()">&#182;</a></h3><p>A test set should still be held out for final evaluation, but the validation set is no longer needed when doing CV. In the basic approach, called k-fold CV, the training set is split into k smaller sets. The following procedure is followed for each of the k “folds”:</p>
+<h2 id="Cross-Validation"><a href="http://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" target="_blank">Cross-Validation</a><a class="anchor-link" href="#Cross-Validation">&#182;</a></h2><h3 id="cross_val_score()"><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html" target="_blank"><strong>cross_val_score()</strong></a><a class="anchor-link" href="#cross_val_score()">&#182;</a></h3><p>A test set should still be held out for final evaluation, but the validation set is no longer needed when doing CV. In the basic approach, called k-fold CV, the training set is split into k smaller sets. The following procedure is followed for each of the k “folds”:</p>
 <ul>
 <li>A model is trained using k-1 of the folds as training data;  </li>
 <li>the resulting model is validated on the remaining part of the data (i.e., it is used as a test set to compute a performance measure such as accuracy).<br>
@@ -1446,7 +1446,7 @@ The performance measure reported by k-fold cross-validation is then the average 
 <strong>X</strong>: array-like data to fit<br>
 <strong>y</strong>: array-like the target variable to try to predict<br>
 <strong>cv</strong>: int, the number of folds<br>
-<strong>scoring</strong>: A string (see <a href="http://scikit-learn.org/stable/modules/model_evaluation.html">docs</a>) or a scorer callable object / function with signature scorer(estimator, X, y).</p>
+<strong>scoring</strong>: A string (see <a href="http://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank">docs</a>) or a scorer callable object / function with signature scorer(estimator, X, y).</p>
 
 </div>
 </div>
@@ -1506,9 +1506,9 @@ The performance measure reported by k-fold cross-validation is then the average 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="cross_val_predict()"><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html"><strong>cross_val_predict()</strong></a><a class="anchor-link" href="#cross_val_predict()">&#182;</a></h3><p><code>cross_val_score()</code> returns an array of the evaluation scores (the accuracy) measured for each fold.<br>
+<h3 id="cross_val_predict()"><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html" target="_blank"><strong>cross_val_predict()</strong></a><a class="anchor-link" href="#cross_val_predict()">&#182;</a></h3><p><code>cross_val_score()</code> returns an array of the evaluation scores (the accuracy) measured for each fold.<br>
 <code>cross_val_predict()</code> returns the predictions made on each test fold so you can pass it to <code>confusion_matrix()</code></p>
-<p>The function <code>cross_val_predict</code> has a similar interface to <code>cross_val_score</code>, but returns, for each element in the input, the prediction that was obtained for that element when it was in the test set.  <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html">Docs</a></p>
+<p>The function <code>cross_val_predict</code> has a similar interface to <code>cross_val_score</code>, but returns, for each element in the input, the prediction that was obtained for that element when it was in the test set.  <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html" target="_blank">Docs</a></p>
 <p>Just like the <code>cross_val_score()</code> function, <code>cross_val_predict()</code> performs $k$-fold cross-validation, but instead of returning the evaluation scores, it returns the predictions made on each test fold. This means that you get a clean prediction for each instance in the training set (“clean” meaning that the prediction is made by a model that never saw the data during training). Now you are ready to get the confusion matrix using the <code>confusion_matrix()</code> function. Just pass it the target classes (<code>y_train</code>) and the predicted classes (<code>y_train_pred</code>):</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
 

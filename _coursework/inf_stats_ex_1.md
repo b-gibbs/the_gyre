@@ -71,7 +71,7 @@ permalink: /coursework/stats/body_temp/
             <ul>
                 <li>In the control panel at the top, choose Cell &gt; Cell Type &gt; Markdown</li>
                 <li>Markdown syntax:
-                    <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
+                    <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
                 </li>
             </ul>
             <h4 id="Resources">Resources
@@ -79,11 +79,11 @@ permalink: /coursework/stats/body_temp/
             </h4>
             <ul>
                 <li>Information and data sources:
-                    <a href="http://www.amstat.org/publications/jse/datasets/normtemp.txt">http://www.amstat.org/publications/jse/datasets/normtemp.txt</a>,
-                    <a href="http://www.amstat.org/publications/jse/jse_data_archive.htm">http://www.amstat.org/publications/jse/jse_data_archive.htm</a>
+                    <a href="http://www.amstat.org/publications/jse/datasets/normtemp.txt" target="_blank">http://www.amstat.org/publications/jse/datasets/normtemp.txt</a>,
+                    <a href="http://www.amstat.org/publications/jse/jse_data_archive.htm" target="_blank">http://www.amstat.org/publications/jse/jse_data_archive.htm</a>
                 </li>
                 <li>Markdown syntax:
-                    <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
+                    <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet" target="_blank">http://nestacms.com/docs/creating-content/markdown-cheat-sheet</a>
                 </li>
             </ul>
             <hr>
@@ -899,7 +899,7 @@ p-value: 0.1565
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <div class="alert alert-block alert-success">
-                <h3 id="Analyis">Analysis</h3>
+                <h4 id="Analyis">Analysis</h4>
                 <p>Again, since the population standard deviation is unknown, the $t$-test is the only option available. The p-value is greater than 0.05, so the null hypothesis cannot be rejected on the basis of this test.</p>
             </div>
         </div>
@@ -1096,7 +1096,7 @@ margin of error: +/-1.4315
     </div>
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
-            <h2 id="Question-#6">Question #6</h2>
+            <h3 id="Question-#6">Question #6</h3>
             <hr>
             <p>Is there a significant difference between males and females in normal temperature?</p>
             <ul>
@@ -1111,7 +1111,7 @@ margin of error: +/-1.4315
     </div>
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
-            <h3 id="Hypotheses">Hypotheses</h3>
+            <h4 id="Hypotheses">Hypotheses</h4>
             <p>$H_0: \bar x_m\ =\ \bar x_f$</p>
             <p>$H_a: \bar x_m \neq\ \bar x_f$</p>
 
