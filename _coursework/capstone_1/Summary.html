@@ -1,8 +1,3 @@
----
-title: Defensive Backs Making the Transition to the NFL
-permalink: /coursework/projects/nfl_defensive_back/
----
-
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12,13 +7,12 @@ permalink: /coursework/projects/nfl_defensive_back/
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 
 </div>
 </div>
 </div>
-
-
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -60,6 +54,109 @@ table th {text-align:center !important}
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">rcParams</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+
+<span class="c1">#svg.fonttype: path</span>
+
+<span class="n">blue</span> <span class="o">=</span> <span class="s1">&#39;#3498DB&#39;</span>
+<span class="n">gray</span> <span class="o">=</span> <span class="s1">&#39;#95A5A6&#39;</span>
+<span class="n">red</span> <span class="o">=</span> <span class="s1">&#39;#E74C3C&#39;</span>
+<span class="n">dark_gray</span> <span class="o">=</span> <span class="s1">&#39;#34495E&#39;</span>
+<span class="n">green</span> <span class="o">=</span> <span class="s1">&#39;#2ECC71&#39;</span>
+<span class="n">purple</span> <span class="o">=</span> <span class="s1">&#39;#9B59B6&#39;</span>
+<span class="n">flatui</span> <span class="o">=</span> <span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">gray</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">dark_gray</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">purple</span><span class="p">]</span>
+
+<span class="c1">#rcParams[&#39;axes.prop_cycle&#39;] = cycler(&#39;color&#39;, [blue, gray, red, dark_gray, green, purple])</span>
+
+<span class="c1"># Patches</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;patch&#39;</span><span class="p">,</span> 
+       <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+       <span class="n">facecolor</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">,</span> 
+       <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> 
+       <span class="n">force_edgecolor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+       <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+  
+<span class="c1"># Figure</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> 
+       <span class="n">figsize</span><span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+       <span class="n">dpi</span><span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+       <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> 
+       <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> 
+       <span class="n">titlesize</span><span class="o">=</span><span class="s1">&#39;xx-large&#39;</span><span class="p">,</span>
+       <span class="n">titleweight</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+
+<span class="c1"># Grid</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> 
+       <span class="n">color</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">,</span>
+       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+       <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+       <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="c1"># Axes</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> 
+       <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>
+       <span class="n">edgecolor</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">,</span>
+       <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+       <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+       <span class="n">titlesize</span><span class="o">=</span><span class="s1">&#39;large&#39;</span><span class="p">,</span>
+       <span class="n">labelsize</span><span class="o">=</span><span class="s1">&#39;large&#39;</span><span class="p">,</span>
+       <span class="n">labelcolor</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">,</span>
+       <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes.spines&#39;</span><span class="p">,</span>
+       <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+       <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Ticks</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> 
+       <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick.major&#39;</span><span class="p">,</span> 
+       <span class="n">size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick.minor&#39;</span><span class="p">,</span> 
+       <span class="n">size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> 
+       <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">dark_gray</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick.major&#39;</span><span class="p">,</span> 
+       <span class="n">size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick.minor&#39;</span><span class="p">,</span> 
+       <span class="n">size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;legend&#39;</span><span class="p">,</span> 
+       <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+       <span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> 
+       <span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
+       <span class="n">weight</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+       <span class="n">family</span><span class="o">=</span><span class="s1">&#39;sans-serif&#39;</span><span class="p">)</span>
+
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span> <span class="s1">&#39;Verdana&#39;</span><span class="p">,</span> <span class="s1">&#39;Lucida Grande&#39;</span><span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.notebook_repr_html&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -78,7 +175,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
+<p><br>
+<br></p>
 <h2 id="Requirements-of-the-Position"><strong>Requirements of the Position</strong><a class="anchor-link" href="#Requirements-of-the-Position">&#182;</a></h2><p>Defensive Backs' primary responsibility is to guard against the pass by covering the opposing offense's wide receivers.  This requires them to be able to run fast, jump high, maneuver quickly and have some instincts for finding a ball in the air while doing so.  Being sure-handed is also helpful if they are able to put themselves in positions to intercept the ball.</p>
 <p>Defensive Backs must also be big enough and strong enough to make tackles if the pass is completed and on the occasions when they must tackle a 230+-pound running back who has made it through the Defensive Line and past the Linebackers.  And, they must be durable enough to avoid injuries while doing so.</p>
 <p>Finally, they must be 'football smart' enough to learn their responsibilities for each defensive play and to read opposing offenses' formations to be able to anticipate each play.</p>
@@ -128,8 +226,9 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<h2 id="The-Path-to-Success"><strong>The Path to Success</strong><a class="anchor-link" href="#The-Path-to-Success">&#182;</a></h2><p>According to an <a href="https://www.cbsnews.com/news/the-odds-of-playing-college-sports/" target="_blank"> article from CBS News</a>, the odds that a high school senior football player will eventually be drafted by an NFL team are 0.08%.  One in 16 high school senior football players will play college football at some level, some of those players will stop playing during college, and, for those who do continue to play through their senior year of college, only 1 in 50 will be drafted by an NFL team.</p>
+<p><br>
+<br></p>
+<h2 id="The-Path-to-Success"><strong>The Path to Success</strong><a class="anchor-link" href="#The-Path-to-Success">&#182;</a></h2><p>According to an <a href="https://www.cbsnews.com/news/the-odds-of-playing-college-sports/">article from CBS News</a>, the odds that a high school senior football player will eventually be drafted by an NFL team are 0.08%.  One in 16 high school senior football players will play college football at some level, some of those players will stop playing during college, and, for those who do continue to play through their senior year of college, only 1 in 50 will be drafted by an NFL team.</p>
 <p>There are several possible paths to the NFL, but the typical path involves being a high school standout, getting a full scholarship to play for an NCAA Division I team, gaining enough recognition to be invited to participate in the NFL Combine and eventually being drafted by an NFL team in the Spring of a player's senior year of college.</p>
 <p>Alternatively, a player may stand out at a Division II or even a Division III school, may attend a college Pro Day instead of the Combine and may even play in the Canadian Football League for a year or two before making their way to the NFL.  And, a player not drafted may may opt to walk-on to a team's Training Camp, a period of time prior to the start of each season where players warm-up for the season, learn new plays and many try to prove that they deserve a place at or near the top of the team's depth chart.</p>
 <p>At the beginning of each season, teams are allowed 90-man rosters throughout Training Camp, but the rosters must be trimmed to 53 prior to the first game of the regular season.  Some of those cut may try out for other teams, others may be asked to join the team's Practice Squad.  A player on the Practice Squad may be promoted to the 53-man roster if a player ahead of him on the team's depth chart suffers a season-ending injury.  Either way, he'll have another chance to prove himself at the following season's Training Camp.</p>
@@ -141,6 +240,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<br></p>
 <h2 id="Data:-What-Would-Be-Useful?"><strong>Data: What Would Be Useful?</strong><a class="anchor-link" href="#Data:-What-Would-Be-Useful?">&#182;</a></h2><p>Useful data can be broken into three categories:</p>
 <ol>
 <li><strong>football experience</strong><ul>
@@ -177,6 +278,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<br></p>
 <h2 id="Data:-What-is-Available?"><strong>Data: What is Available?</strong><a class="anchor-link" href="#Data:-What-is-Available?">&#182;</a></h2><p><strong>Football Experience</strong>:  High school statistics are not widely available and NFL statistics are irrelevant because I'm approaching this as a recruiter, looking for talent at the college level to draft and develop.  So, NCAA game statistics are the obvious choice.</p>
 <p>I decided that comparing players who played in Divison II or Division III against players in Division I was unfair and not useful.  That's not to say that game statistics for Division II and III players are irrelevant, but, in a machine learning exercise, DII &amp; DIII statistics would have to be discounted at some rate to provide for the difference in the speed of the game and the skills of the players at the different levels.</p>
 <p><strong>Raw Athleticism</strong>:  The NFL Scouting Combine is an invitation-only event that is held in Indianapolis every year in February or March.  Results from the Combine are ideal for testing raw athleticism.  In particular, the 40-yard dash, 3 cone drill, vertical leap and shuttle drills test a player's speed, acceleration, agility and leaping ability.  The downside to using this data is that the event is invitation-only, and not all players who play in the NFL participate in the Combine.  As a result, this data is not available for all NCAA Division I players, or, for all NFL players.</p>
@@ -189,13 +292,14 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Collection-and-Cleaning"><strong>Data Collection and Cleaning</strong><a class="anchor-link" href="#Data-Collection-and-Cleaning">&#182;</a></h2>
-<h3 id="NCAA-Bios---Importing-.csvs-from-cfbstats.com"><strong>NCAA Bios</strong> - Importing .csvs from cfbstats.com<a class="anchor-link" href="#NCAA-Bios---Importing-.csvs-from-cfbstats.com">&#182;</a></h3><hr>
-<p>I found a collection of .csv files for NCAA players from 2005 - 2013 hosted on someone's Google Drive from a link in a subreddit.  Later, I learned that that data set was also posted on <a href="https://www.kaggle.com/mhixon/college-football-statistics" target="_blank">Kaggle</a>, and that it was initially an open database hosted at <a href="http://www.cfbstats.com" target="_blank">cfbstats.com</a>.  That database disappeared behind a (very expensive) paywall in 2014.  The data set posted on Kaggle had been downloaded by someone just before the site put up the paywall in 2014.</p>
+<p><br>
+<br></p>
+<h2 id="Data-Collection-and-Cleaning"><strong>Data Collection and Cleaning</strong><a class="anchor-link" href="#Data-Collection-and-Cleaning">&#182;</a></h2><h3 id="NCAA-Bios---Importing-.csvs-from-cfbstats.com"><strong>NCAA Bios</strong> - Importing .csvs from cfbstats.com<a class="anchor-link" href="#NCAA-Bios---Importing-.csvs-from-cfbstats.com">&#182;</a></h3><hr>
+<p>I found a collection of .csv files for NCAA players from 2005 - 2013 hosted on someone's Google Drive from a link in a subreddit.  Later, I learned that that data set was also posted on <a href="https://www.kaggle.com/mhixon/college-football-statistics">Kaggle</a>, and that it was initially an open database hosted at <a href="http://www.cfbstats.com">cfbstats.com</a>.  That database disappeared behind a (very expensive) paywall in 2014.  The data set posted on Kaggle had been downloaded by someone just before the site put up the paywall in 2014.</p>
 <p>I wrote to cfbstats.com, explained that I was a student and that I wanted to use their data for a data science project.  I asked if they had acadmeic rates, but never heard back from them.  It wouldn't be unreasonable to assume that even the data from 2005 - 2013 improved once access to that data disappeared behind the paywall.  Having access to that data would have saved me a lot of time and could have provided more complete and possibly more reliable data.  If I were actually getting paid for this work by an NFL team, I would have pushed them to purchase access to this data.</p>
 <p>This was the most complete source of NCAA data I found.  It contained not only game stats, but also biographical information, including height, weight and home state, which figured to be useful for the reasons stated above.  My first concern was that it only covered players from 2005 - 2013.  I had already set the bar for success at 3+ years in the NFL, which meant that in order to have played at least 3 years in the NFL, a player would have left college after the 2014 season.  Despite the fact that this data set did not contain game data for the NCAA 2014 season, I decided to proceed with it.</p>
 <p>The .csvs for this data were split into teams, players and game stats, and each of these was split into one .csv file per year.  The .csvs with the prefix 'player' contained biographical information on each player, as well as a column labeled 'Player Code' which acted as an id to tie the biographical information to the player's game stats for that year, contained in the files prefixed with 'games':</p>
-<p><img src="/assets/images/NFL_DB/cfbstats.com_data_structure.png" alt="File Structure"></p>
+<p><img src="05_images/cfbstats.com_data_structure.png" alt="File Structure"></p>
 
 </div>
 </div>
@@ -204,8 +308,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' .duplicated() function, but also by looking through each name for slight variations on the name.</p>
-<p><strong>2. Aggregated statistics were inaccurate:</strong> Within a given year, each player's stats were provided on a game-by-game basis, which I aggregated to get total stats for the year.  After some initial Exploratory Data Analysis (<strong>'EDA'</strong>) I found these stats to be consistently lower than the stats available on the ncaa.org website.</p>
+<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' .duplicated() function, but also by looking through each name for slight variations on the name.<br>
+<strong>2. Aggregated statistics were inaccurate:</strong> Within a given year, each player's stats were provided on a game-by-game basis, which I aggregated to get total stats for the year.  After some initial Exploratory Data Analysis (<strong>'EDA'</strong>) I found these stats to be consistently lower than the stats available on the ncaa.org website.</p>
 
 </div>
 </div>
@@ -302,12 +406,12 @@ table th {text-align:center !important}
     <tbody>
       <tr>
         <td><b>Players</b></td>
-        <td>7,528</td>
+        <td>7,521</td>
         <td>DBs from an NCAA Division I school with biographical data between 2005 and 2013</td>
       </tr>
       <tr>
         <td><b>In Study</b></td>
-        <td>5,723</td>
+        <td>6,051</td>
         <td>DBs who had matching NCAA game stats and were included in this project</td>
       </tr>
     </tbody>
@@ -320,14 +424,12 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<br></p>
 <h3 id="NCAA-Stats---Using-BS4-to-scrape-stats-from-the-web"><strong>NCAA Stats</strong> - Using BS4 to scrape stats from the web<a class="anchor-link" href="#NCAA-Stats---Using-BS4-to-scrape-stats-from-the-web">&#182;</a></h3><hr>
-<p>After an appropriate period of mourning over the loss of a single, clean data source, I decided I had to scrape the <a href="https://web1.ncaa.org/stats/StatsSrv/careersearch" target="_blank">ncaa.org website</a>.  I used BeautifulSoup4 to write a scraper in VS Code that would first query a team, scrape the team's rosters for DBs from 2005 - 2017 to build a unique set of players and their ids, then query each player's id for the player's career stats.</p>
-
-<a class="anchor" name="ncaa_scraper.py"></a>
-<a href="/coursework/projects/nfl_defensive_back/ncaa_scraper"><button type="button" class="btn btn-primary">ncaa_scraper.py</button></a>
-
+<p>After an appropriate period of mourning over the loss of a single, clean data source, I decided I had to scrape the <a href="https://web1.ncaa.org/stats/StatsSrv/careersearch">ncaa.org website</a>.  I used BeautifulSoup4 to write a scraper in VS Code that would first query a team, scrape the team's rosters for DBs from 2005 - 2017 to build a unique set of players and their ids, then query each player's id for the player's career stats.</p>
+<p><a href="sausage_factory/ncaa_scraper.py">ncaa_scraper.py</a></p>
 <p>I turned each player's career into a single row of a DataFrame by creating a set of columns to represent statistics for each potential year of a player's career - Redshirt Freshman, Freshman, Sophomore, Junior and Senior and collected of a team's players into a single DataFrame.  Again, I needed to go through each team to look for players who had been assigned multiple ids and then join their entries into a single entry.  The game stats for each year are as follows:</p>
-
 
 </div>
 </div>
@@ -469,7 +571,7 @@ table th {text-align:center !important}
       </tr>
       <tr>
         <td><b>In Study</b></td>
-        <td>5,723</td>
+        <td>6,051</td>
         <td>DBs who had matching biographical info and were included in this project</td>
       </tr>
     </tbody>
@@ -482,11 +584,10 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that, like the cfbstats.com data above, some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' <code>.duplicated()</code> function, but also by looking through each name for slight variations on the name.</p>
-<p><strong>2. Class years overlapped</strong>: Many players had mislabeled classes.  For example, a player being listed as a junior for two years' worth of stats.  I created a class with some methods to correct Issue #1 above and to deduplicate duplicated classes in an efficient and accurate fashion.</p>
-<a class="anchor" name="ncaa_deduper.ipynb"></a>
-<a href="/coursework/projects/nfl_defensive_back/ncaa_deduper_notebook"><button type="button" class="btn btn-primary">NCAA Deduper.ipynb</button></a>
-
+<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p><strong>1. Two ids for a single player</strong>: After concatenating this data into a single DataFrame, I discovered that, like the cfbstats.com data above, some of the players' NCAA careers had been mistakenly split into two or more entries; one id had been assigned to a year or two of a player's career and another id to the remainder of the same player's career, where there should have been a one-to-one relationship between id and player + player stats.  I went through, team-by-team and player-by-player and corrected this, not only by using pandas' <code>.duplicated()</code> function, but also by looking through each name for slight variations on the name.<br>
+<br>
+<strong>2. Class years overlapped</strong>: Many players had mislabeled classes.  For example, a player being listed as a junior for two years' worth of stats.  I created a class with some methods to correct Issue #1 above and to deduplicate duplicated classes in an efficient and accurate fashion.</p>
+<p><a href="sausage_factory/ncaa_deduper.ipynb">NCAA Deduper Notebook</a></p>
 
 </div>
 </div>
@@ -495,7 +596,8 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
+<p><br>
+<br></p>
 <h3 id="NFL-Scouting-Combine---Importing-from-.csv"><strong>NFL Scouting Combine</strong> - Importing from .csv<a class="anchor-link" href="#NFL-Scouting-Combine---Importing-from-.csv">&#182;</a></h3><hr>
 
 </div>
@@ -505,15 +607,14 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Cleaning:">Cleaning:<a class="anchor-link" href="#Cleaning:">&#182;</a></h4><p>I took some simple steps to:</p>
+<p>The NFL Scouting Combine is the ideal source for data on players' raw athleticism.  However, as noted elsewhere, it is an invitation-only event, and only a very small proportion of players are invited each year.  I downloaded Combine data from a <a href="https://www.pro-football-reference.com/draft/2018-combine.htm">single source</a> in .csv format.  I performed some manipulations to split and move data and rename some columns, but had no issues with this data set.</p>
+<h4 id="Cleaning">Cleaning<a class="anchor-link" href="#Cleaning">&#182;</a></h4><p>I took some simple steps to:</p>
 <ul>
 <li>drop unnecessary columns</li>
 <li>break a single column containing draft information into <code>draft_round</code>, <code>draft_pick</code> and <code>draft_team</code> columns</li>
 <li>change the format of the height column from 5-11 to 71 (feet-inches to inches)</li>
 </ul>
-
-<a class="anchor" name="combine_cleaner.ipynb"></a>
-<a href="/coursework/projects/nfl_defensive_back/combine_cleaner_notebook"><button type="button" class="btn btn-primary">Combine Cleaner.ipynb</button></a>
+<p><a href="sausage_factory/Clean_Combine.ipynb">Combine Cleaner Notebook</a></p>
 
 </div>
 </div>
@@ -633,11 +734,13 @@ table th {text-align:center !important}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<br></p>
 <h3 id="NFL---Accessing-Data-Using-an-API"><strong>NFL</strong> - Accessing Data Using an API<a class="anchor-link" href="#NFL---Accessing-Data-Using-an-API">&#182;</a></h3><hr>
 <p>I really only needed the number of seasons a player played in the NFL, but I collected a few additional biographical statistics while I was accessing the API.  I chose the sportradar.com API because it contained the information I needed along with some additional biographical information and it appeared to be complete and accurate.</p>
 <p>Their database is behind a paywall, but I was able to sign up for a trial.  When it became apparent that I needed more data than the trial terms would allow, I contacted them and they graciously raised my limits to allow me to download the information I needed.</p>
 <p>As with the NCAA statistics, I first queried the teams for their rosters to get ids for each player, then used those ids to access players individually.</p>
-<h4 id="Cleaning:">Cleaning:<a class="anchor-link" href="#Cleaning:">&#182;</a></h4><p>I took some simple steps to:</p>
+<h4 id="Cleaning">Cleaning<a class="anchor-link" href="#Cleaning">&#182;</a></h4><p>I took some simple steps to:</p>
 <ul>
 <li>break birthdate out into three separate columns, </li>
 <li>concatenate the player's preferred name with the last name, </li>
@@ -647,11 +750,8 @@ table th {text-align:center !important}
 <li>take the <code>.max()</code> of seasons played to get value for the 'last_season' column,</li>
 <li>added a column to insert the exact spelling of the player's name used in the NCAA DataFrame to merge the two</li>
 </ul>
-
-<a class="anchor" name="nfl_cleaner.ipynb"></a>
-<a href="/coursework/projects/nfl_defensive_back/nfl_cleaner_notebook"><button type="button" class="btn btn-primary">NFL Cleaner.ipynb</button></a>
-
-<h4 id="Issues:">Issues:<a class="anchor-link" href="#Issues:">&#182;</a></h4><p>There were no issues, once the limits of the trial were lifted.</p>
+<p><a href="02_cleaning/Clean_NFL.ipynb">NFL Data Cleaner Notebook</a></p>
+<h4 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h4><p>There were no issues, once the limits of the trial were lifted.</p>
 
 </div>
 </div>
@@ -668,7 +768,6 @@ table th {text-align:center !important}
         <th>Description</th>
       </tr>
     </thead>
-    <tbody>
       <tr>
         <td><b>player</b></td>
         <td>player's first and last name, used to merge with other data sets</td>
@@ -758,6 +857,7 @@ table th {text-align:center !important}
       <tr>
         <th>Stat</th>
         <th>#</th>
+        <th>%</th>
         <th>Description</th>
       </tr>
     </thead>
@@ -765,16 +865,19 @@ table th {text-align:center !important}
       <tr>
         <td><b>Players</b></td>
         <td>1,308</td>
+        <td> - </td>
         <td>DBs played in the NFL from 2006 - 2017</td>
       </tr>
       <tr>
         <td><b>In study</b></td>
-        <td>495</td>
+        <td>519</td>
+        <td>8.577%</td>
         <td>DBs who played in the NFL and were included in this project</td>
       </tr>
       <tr>
         <td><b>NFL Success</b></td>
-        <td>287</td>
+        <td>296</td>
+        <td>4.892%</td>
         <td>DBs who played at least 3 years and are in the final DataFrame</td>
       </tr>
     </tbody>
@@ -782,8 +885,6 @@ table th {text-align:center !important}
 </div>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -2681,5 +2782,4 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 </div>
  
-
 
