@@ -3,7 +3,7 @@ title: NCAA Stats Only Modeling Notebook
 layout: code 
 permalink: /coursework/projects/nfl_defensive_back/modeling_ncaa
 excerpt: "" 
-section: "/coursework/projects/nfl_defensive_back/#ncaa_modeling.ipynb" 
+section: "/coursework/projects/nfl_defensive_back/#Modeling-NCAA-Dataset" 
 ---
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">

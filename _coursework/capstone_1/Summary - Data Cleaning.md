@@ -134,6 +134,8 @@ table th {text-align:center !important}
 <p>Alternatively, a player may stand out at a Division II or even a Division III school, may attend a college Pro Day instead of the Combine and may even play in the Canadian Football League for a year or two before making their way to the NFL.  And, a player not drafted may may opt to walk-on to a team's Training Camp, a period of time prior to the start of each season where players warm-up for the season, learn new plays and many try to prove that they deserve a place at or near the top of the team's depth chart.</p>
 <p>At the beginning of each season, teams are allowed 90-man rosters throughout Training Camp, but the rosters must be trimmed to 53 prior to the first game of the regular season.  Some of those cut may try out for other teams, others may be asked to join the team's Practice Squad.  A player on the Practice Squad may be promoted to the 53-man roster if a player ahead of him on the team's depth chart suffers a season-ending injury.  Either way, he'll have another chance to prove himself at the following season's Training Camp.</p>
 
+<p><img src="/assets/images/NFL_DB/Path to NFL.jpg" alt="Path to Success"></p>
+
 </div>
 </div>
 </div>
@@ -792,7 +794,7 @@ table th {text-align:center !important}
 <p><strong>NCAA + NFL Dataset</strong>
 The first dataset contains NCAA biographical data, game statistics and NFL player data for those who made it to the NFL.  Of the 1,308 players in the NFL dataset, 678 were not found in the NCAA dataset, which is constrained by NCAA players who attended a Division 1 school between 2008 and 2013.  Of the 678 NFL players that weren't in the NCAA dataset, I found that 242 of them did not play at a D1 school, which left 436 players missing.  NFL players whose rookie seasons occurred prior to 2009 would be too old to have NCAA biographical data, so, I also eliminated those 374 players, which left 62 players from the NFL dataset who were not included in the NCAA dataset.</p>
 <p>As shown in the <em>Stats on Stats: NFL</em> table above, only 8.577% of the 6,051 players tracked in the NCAA dataset ever played in the NFL.  Among those, slightly more than half (57%) played at least three years in the NFL and are considered successes for purposes of this problem.  In sum, just under 5% of the players who played in the NCAA played at least three years in the NFL.  As a result, I have chosen to treat this as an imbalanced dataset and to measure performance of various binary classification algorithms using precision, recall and F1 scores.</p>
-<p><img src="05_images/data_path.png" alt="data"></p>
+<p><img src="/assets/images/NFL_DB/Data Path.svg" alt="data"></p>
 <p><strong>Combine + NFL Dataset</strong></p>
 
 </div>
@@ -802,12 +804,8 @@ The first dataset contains NCAA biographical data, game statistics and NFL playe
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>"A committee of selectors chooses which players are invited to combine. None of the selectors has ties to any particular conference, university, program or player representation agency, although coaches and agents routinely lobby for players to be invited. 
-Typically, the number of those players invited comes out to around 325.</p>
-<p>Roughly one-third of the players who are invited to the combine aren't drafted. A couple dozen players who aren't invited are drafted each year. From 1999 to 2007, nearly 190 players who weren't invited to the combine were drafted. Dozens more non-invitees latched on to teams as free agents.</p>
-<p>The main reasons players don't make the combine are injuries, having non-NFL-type measurables, a lack of production and playing against lesser competition."</p>
+<p>I was able to scrape all of the data needed for each player from a single source.  No merging was required.</p>
 
-<pre><code>- http://www.nfl.com/combine/story/09000d5d80ec172d/article/no-combine-doesnt-mean-no-chance-for-players-to-make-the-nfl</code></pre>
 
 </div>
 </div>
@@ -2455,7 +2453,9 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modeling"><strong>Modeling</strong><a class="anchor-link" href="#Modeling">&#182;</a></h2><p>In searching for the best predictive model, the goals, in order of importance, are:</p>
+
+<h2 id="Modeling"><strong>Modeling</strong><a class="anchor-link" href="#Modeling">&#182;</a></h2>
+<p>In searching for the best predictive model, the goals, in order of importance, are:</p>
 <ol>
 <li><p>Minimize False Positives: minimizing false positives means that we concentrate our resources on players who are most likely to be successful.</p>
 </li>
@@ -2470,7 +2470,7 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NCAA-Dataset"><strong>NCAA Dataset</strong><a class="anchor-link" href="#NCAA-Dataset">&#182;</a></h3><p>Learning algorithms trained on this dataset provided unsatisfactory results.  There was no single feature or combination of features in this dataset that reliably predicted NFL success.</p>
+<h3 id="Modeling-NCAA-Dataset"><strong>NCAA Dataset</strong><a class="anchor-link" href="#Modeling-NCAA-Dataset">&#182;</a></h3><p>Learning algorithms trained on this dataset provided unsatisfactory results.  There was no single feature or combination of features in this dataset that reliably predicted NFL success.</p>
 <p>The first thing to note is that the dataset in imbalanced.  Less than 5% of the observations were successful.  I used SMOTE to even out the results.</p>
 <div>
   <table>
@@ -2579,7 +2579,7 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NCAA-+-Combine-Dataset"><strong>NCAA + Combine Dataset</strong><a class="anchor-link" href="#NCAA-+-Combine-Dataset">&#182;</a></h3>
+<h3 id="Modeling-NCAA-+-Combine-Dataset"><strong>NCAA + Combine Dataset</strong><a class="anchor-link" href="#Modeling-NCAA-+-Combine-Dataset">&#182;</a></h3>
 </div>
 </div>
 </div>

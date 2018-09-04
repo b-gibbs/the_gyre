@@ -3,7 +3,7 @@ title: Combine Modeling Notebook
 layout: code 
 permalink: /coursework/projects/nfl_defensive_back/modeling_combine
 excerpt: "" 
-section: "/coursework/projects/nfl_defensive_back/#modeling_combine.ipynb" 
+section: "/coursework/projects/nfl_defensive_back/#Modeling-NCAA-+-Combine-Dataset" 
 ---
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
