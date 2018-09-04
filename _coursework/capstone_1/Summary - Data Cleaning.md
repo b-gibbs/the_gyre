@@ -783,8 +783,7 @@ table th {text-align:center !important}
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -2446,8 +2445,8 @@ Typically, the number of those players invited comes out to around 325.</p>
 <p>Although the number of players involved in this dataset is much smaller, adding the additional features (the results of the combine drills) provided the qualities that could be used to distinguish the successes from the rest of the pack.</p>
 <p>A thorough explanation of the Combine drills can be found in this article from <a href="http://www.sportingnews.com/us/nfl/news/nfl-combine-2018-drills-workouts-position-groups-schedule/1troryz9766ll1j4e32tqupugd">Sporting News</a>.</p>
 <p>Two of the distinguishing features in the dataset are shown below.</p>
-<p><img src="05_images/combine_eda_forty.png" alt=""></p>
-<p><img src="05_images/combine_eda_vertical.png" alt=""></p>
+<p><img src="/assets/images/NFL_DB/combine_eda_forty.png" width="450" alt=""></p>
+<p><img src="/assets/images/NFL_DB/combine_eda_vertical.png" width="450" alt=""></p>
 
 </div>
 </div>
@@ -2561,12 +2560,17 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 </div>
 </div>
+
+
+<a class="anchor" name="ncaa_modeling.ipynb"></a>
+<a href="/coursework/projects/nfl_defensive_back/modeling_ncaa"><button type="button" class="btn btn-primary">ncaa_modeling.ipynb</button></a>
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Confusion-Matrix">Confusion Matrix<a class="anchor-link" href="#Confusion-Matrix">&#182;</a></h4><p>The best Confuision Matrix was for LinearSVC:</p>
-<p><img src="05_images/ncaa_linearsvc_cm.png" alt=""></p>
+<p><img src="/assets/images/NFL_DB/ncaa_linearsvc_cm.png" width="450" alt=""></p>
 
 </div>
 </div>
@@ -2645,12 +2649,16 @@ Typically, the number of those players invited comes out to around 325.</p>
 </div>
 </div>
 </div>
+
+<a class="anchor" name="combine_modeling.ipynb"></a>
+<a href="/coursework/projects/nfl_defensive_back/modeling_combine"><button type="button" class="btn btn-primary">combine_modeling.ipynb</button></a>
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Confusion-Matrix">Confusion Matrix<a class="anchor-link" href="#Confusion-Matrix">&#182;</a></h4><p>Below is the Confusion Matrix for the tuned XGBoost model.</p>
-<p><img src="05_images/combine_xgb_cm.png" alt=""></p>
+<p><img src="/assets/images/NFL_DB/combine_xgb_cm.png" width="450" alt=""></p>
 
 </div>
 </div>
@@ -2660,7 +2668,7 @@ Typically, the number of those players invited comes out to around 325.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Feature-Importance">Feature Importance<a class="anchor-link" href="#Feature-Importance">&#182;</a></h4><p>The feature importance for the tuned XGBoost model shows that the features that the model relied upon most heavily make intuitive sense.</p>
-<p><img src="05_images/combine_xgb_feature_importance.png" alt=""></p>
+<p><img src="/assets/images/NFL_DB/combine_xgb_feature_importance.png" alt=""></p>
 
 </div>
 </div>
