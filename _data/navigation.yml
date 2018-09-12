@@ -8,6 +8,10 @@ coursework:
       url: /coursework/projects/nfl_defensive_back/
     - page: "What Moves AAPL?"
       url: /coursework/projects/aapl_earnings/
+  - title: "Take Home Challenges"
+    subfolderitems:
+    - page: "Relax"
+      url: /coursework/takehomes/relax/
   - title: "Statistics"
     subfolderitems:
     - page: "Human Body Temp"
