@@ -126,7 +126,7 @@ permalink: /coursework/takehomes/relax/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">&#182;</a></h2><p>The target set was imbalanced, with approximately 13% of all users labeled positively, as adopted users. While not massively imbalanced, I decided to use the SMOTE technique from <code>imblearn</code> to amplify the signal in the noise.  Because the goal of the project is "to identify which factors predict future user adoption", I chose to focus on precision scores and the models that produced the highest number of true positives.  I used sklearn's dummy classifier as a baseline, which produced the following classification report:</p>
-<p><img src="images/dummy_classifier.png" alt=""></p>
+<p><img src="/assets/images/relax/dummy_classifier.png" alt=""></p>
 
 </div>
 </div>
@@ -136,7 +136,7 @@ permalink: /coursework/takehomes/relax/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I ran the dataset through Logistic Regression, LinearSVC, SVC and Random Forest.  The results from Random Forest were the best, so I tuned the hyperparameters and re-ran the model with tuned parameters.  The tuned model results in a slightly higher F1 score, but the precision score was a mixed bag -- the number of true positives increased from 411 to 472, but the number of false positives also increased from 59 to 129.  Below are the results of the tuned Random Forest:</p>
-<p><img src="images/tuned_rf.png" alt=""></p>
+<p><img src="/assets/images/relax/tuned_rf.png" alt=""></p>
 
 </div>
 </div>
