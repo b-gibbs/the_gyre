@@ -12,6 +12,8 @@ coursework:
     subfolderitems:
     - page: "Relax"
       url: /coursework/takehomes/relax/
+    - page: "Ultimate"
+      url: /coursework/takehomes/ultimate/
   - title: "Statistics"
     subfolderitems:
     - page: "Human Body Temp"
