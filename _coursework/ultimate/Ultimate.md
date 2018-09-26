@@ -1,6 +1,6 @@
 ---
 title: Ultimate Take Home Challenge - Analysis
-permalink: /coursework/takehomes/utlimate/
+permalink: /coursework/takehomes/ultimate/
 ---
 
 <div class="cell border-box-sizing code_cell rendered">
